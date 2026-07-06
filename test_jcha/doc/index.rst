@@ -1,10 +1,18 @@
-Shopify Connector Release Notes
-===============================
+CRM module documentation
+========================
+
+CRM documentation topics
+'''''''''''''''''''''''''
 
 .. toctree::
-   :titlesonly:
+   :maxdepth: 1
+   
+   reconnect-instructions.rst
 
-   index
-   set-up-instructions
-   reconnect-instructions
+Changelog
+'''''''''
 
+.. toctree::
+   :maxdepth: 1
+
+   set-up-instructions.rst
