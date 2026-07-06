@@ -1,777 +1,1029 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shopify Connector for Odoo 19</title>
-  <meta name="author" content="Odoo S.A.">
-  <meta name="generator" content="Odoo - https://www.odoo.com">
-  <meta name="description" content="Shopify Connector for Odoo 19 - Modern GraphQL &amp; OAuth integration.">
-  <!-- Created and maintained by Odoo. Brand assets: https://www.odoo.com/page/brand-assets | (c) Odoo S.A. -->
-<link rel="stylesheet" href="https://apps.odoo.com/web/assets/1/7aa8e7f/web.assets_frontend.min.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-</head>
-<body>
-
 <div class="container py-5" style="max-width: 1100px;">
 
-  <!-- ══ TITLE ══ -->
-  <h1 class="text-center fw-bold mb-2">Shopify Connector for Odoo 19</h1>
-  <p class="text-center fs-4 fw-bold mb-4">Run your Shopify store, inventory, accounting, and deliveries all in one place</p>
+	<!-- ══ TITLE ══ -->
+	<h1 class="text-center fw-bold mb-2">Shopify Connector for Odoo 19</h1>
+	<p class="text-center fs-4 fw-bold mb-4">Run your Shopify store, inventory, accounting, and deliveries all in one
+		place</p>
 
-  <!-- ══ SCREENSHOTS ══ -->
-  <div class="row align-items-center g-3 mb-4">
-    <div class="col-md-8">
-      <figure class="text-center mb-0">
-        <img src="Odoo-shopify-orders.png" class="img-fluid rounded border shadow-sm" alt="Shopify orders synchronized into Odoo Sales">
-        <figcaption class="text-muted fst-italic small mt-2">Shopify orders imported as Sales Orders in Odoo, with customer, salesperson, and status visible at a glance.</figcaption>
-      </figure>
-    </div>
-    <div class="col-md-4">
-      <figure class="text-center mb-0">
-        <img src="shopify-connector-mobile.png" class="img-fluid rounded border shadow-sm" style="max-height: 480px; width: auto;" alt="Shopify order detail in Odoo mobile">
-        <figcaption class="text-muted fst-italic small mt-2">Manage Shopify orders on the go — full order detail, line items, and e-commerce references in the Odoo mobile app.</figcaption>
-      </figure>
-    </div>
-  </div>
+	<!-- ══ SCREENSHOTS ══ -->
+	<div class="row align-items-center g-3 mb-4">
+		<div class="col-md-8">
+			<figure class="text-center mb-0">
+				<img src="Odoo-shopify-orders.png" class="img-fluid rounded border shadow-sm"
+					alt="Shopify orders synchronized into Odoo Sales" loading="eager" decoding="async">
+				<figcaption class="text-muted fst-italic small mt-2">Shopify orders imported as Sales Orders in Odoo,
+					with
+					customer, salesperson, and status visible at a glance.</figcaption>
+			</figure>
+		</div>
+		<div class="col-md-4">
+			<figure class="text-center mb-0">
+				<img src="shopify-connector-mobile.png" class="img-fluid rounded border shadow-sm"
+					style="max-height: 480px; width: auto;" alt="Shopify order detail in Odoo mobile" loading="eager"
+					decoding="async">
+				<figcaption class="text-muted fst-italic small mt-2">Manage Shopify orders on the go — full order
+					detail, line
+					items, and e-commerce references in the Odoo mobile app.</figcaption>
+			</figure>
+		</div>
+	</div>
 
-  <p>Unify your Shopify store and Odoo 19 with a robust, high-performance integration built on the latest <strong>GraphQL</strong> and <strong>OAuth</strong> standards for a future-proof commerce experience. The only third-party Shopify app supported by Odoo.</p>
-  <p>Built for businesses that want Shopify to work <strong>natively with Odoo</strong>, without fragile custom logic or upgrade risks.</p>
+	<p>Unify your Shopify store and Odoo 19 with a robust, high-performance integration built on the latest
+		<strong>GraphQL</strong> and <strong>OAuth</strong> standards for a future-proof commerce experience. The only
+		third-party Shopify app supported by Odoo.
+	</p>
+	<p>Built for businesses that want Shopify to work <strong>natively with Odoo</strong>, without fragile custom logic
+		or
+		upgrade risks.</p>
 
-  <!-- ══ LEVERAGE ODOO APPS — gradient band ══ -->
-  <!-- <div class="p-4 rounded-3 my-5" style="background: linear-gradient(135deg, #F0E6FB 0%, #E6EEFB 50%, #EBE5FB 100%);"> -->
-  <div class="p-4 rounded-4 my-5" style="background-color: #EEEBFB;">
-    <h3 class="text-center fw-bold mb-4 h1">Leverage Odoo apps to fit your business</h3>
-    <div class="row g-3">
+	<!-- ══ LEVERAGE ODOO APPS ══ -->
+	<div class="p-4 rounded-4 my-5" style="background-color: #EEEBFB;">
+		<h3 class="text-center fw-bold mb-4">Leverage Odoo apps to fit your business</h3>
+		<div class="row g-3">
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100 border-0 shadow-sm rounded-3">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <img src="blue_warehouse.png" alt="Warehouse" style="width: 40px; height: 40px; object-fit: contain;">
-              <h5 class="card-title fw-bold mb-0">Inventory Management</h5>
-            </div>
-            <p class="card-text text-muted">See every component and product flowing across your end-to-end inventory operation.</p>
-          </div>
-        </div>
-      </div>
+			<div class="col-md-6 col-lg-3">
+				<div class="card h-100 border-0 shadow-sm rounded-3">
+					<div class="card-body">
+						<div class="d-flex align-items-center gap-3 mb-3">
+							<img src="blue_warehouse.png" alt="Warehouse"
+								style="width: 40px; height: 40px; object-fit: contain;" loading="lazy" decoding="async">
+							<h5 class="card-title fw-bold mb-0">Inventory Management</h5>
+						</div>
+						<p class="card-text text-muted">See every component and product flowing across your end-to-end
+							inventory
+							operation.</p>
+					</div>
+				</div>
+			</div>
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100 border-0 shadow-sm rounded-3">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <img src="blue_piggy-bank.png" alt="Piggy bank" style="width: 40px; height: 40px; object-fit: contain;">
-              <h5 class="card-title fw-bold mb-0">Clean books and accurate accounting</h5>
-            </div>
-            <p class="card-text text-muted">Experience effortless financial accuracy with intelligent payment journal splitting and seamless, automated tax synchronization between Shopify and Odoo.</p>
-          </div>
-        </div>
-      </div>
+			<div class="col-md-6 col-lg-3">
+				<div class="card h-100 border-0 shadow-sm rounded-3">
+					<div class="card-body">
+						<div class="d-flex align-items-center gap-3 mb-3">
+							<img src="blue_piggy-bank.png" alt="Piggy bank"
+								style="width: 40px; height: 40px; object-fit: contain;" loading="lazy" decoding="async">
+							<h5 class="card-title fw-bold mb-0">Clean books and accurate accounting</h5>
+						</div>
+						<p class="card-text text-muted">Experience effortless financial accuracy with intelligent
+							payment journal
+							splitting and seamless, automated tax synchronization between Shopify and Odoo.</p>
+					</div>
+				</div>
+			</div>
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100 border-0 shadow-sm rounded-3">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <img src="blue_hand-truck.png" alt="Hand truck" style="width: 40px; height: 40px; object-fit: contain;">
-              <h5 class="card-title fw-bold mb-0">Smarter Order Fulfillment</h5>
-            </div>
-            <p class="card-text text-muted">Fulfill orders from the right place every time. Sync stock and manage orders across multiple locations.</p>
-          </div>
-        </div>
-      </div>
+			<div class="col-md-6 col-lg-3">
+				<div class="card h-100 border-0 shadow-sm rounded-3">
+					<div class="card-body">
+						<div class="d-flex align-items-center gap-3 mb-3">
+							<img src="blue_hand-truck.png" alt="Hand truck"
+								style="width: 40px; height: 40px; object-fit: contain;" loading="lazy" decoding="async">
+							<h5 class="card-title fw-bold mb-0">Smarter Order Fulfillment</h5>
+						</div>
+						<p class="card-text text-muted">Fulfill orders from the right place every time. Sync stock and
+							manage orders
+							across multiple locations.</p>
+					</div>
+				</div>
+			</div>
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100 border-0 shadow-sm rounded-3">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <img src="blue_factory.png" alt="Factory" style="width: 40px; height: 40px; object-fit: contain;">
-              <h5 class="card-title fw-bold mb-0">Scale with Multi-Company</h5>
-            </div>
-            <p class="card-text text-muted">Run multiple Shopify stores from one platform with automatic currency conversion and regional inventory tracking.</p>
-          </div>
-        </div>
-      </div>
+			<div class="col-md-6 col-lg-3">
+				<div class="card h-100 border-0 shadow-sm rounded-3">
+					<div class="card-body">
+						<div class="d-flex align-items-center gap-3 mb-3">
+							<img src="blue_factory.png" alt="Factory"
+								style="width: 40px; height: 40px; object-fit: contain;" loading="lazy" decoding="async">
+							<h5 class="card-title fw-bold mb-0">Scale with Multi-Company</h5>
+						</div>
+						<p class="card-text text-muted">Run multiple Shopify stores from one platform with automatic
+							currency
+							conversion and regional inventory tracking.</p>
+					</div>
+				</div>
+			</div>
 
-    </div>
-  </div>
+		</div>
+	</div>
 
-  <!-- ══ CHOOSE YOUR LEVEL OF SUPPORT ══ -->
-  <hr class="my-5">
-  <h3 class="fw-bold mb-3 h1">Choose your level of support</h3>
-  <div class="row g-3">
-    <div class="col-md-6">
-      <div class="card h-100 border-start border-3 rounded-4 border-primary">
-        <div class="card-body">
-          <h5 class="card-title fw-bold mb-3">Purchase the app and self-manage the repository</h5>
-          <p class="mb-2">1-hour free meeting with an expert, to get:</p>
-          <ul class="mb-0">
-            <li>A tailored demonstration</li>
-            <li>Recommendations based on your needs</li>
-            <li>Answers to your questions about Odoo</li>
-            <li>Information about pricing &amp; methodology</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card h-100 border-start border-3 rounded-4 border-primary">
-        <div class="card-body">
-          <h5 class="card-title fw-bold mb-3">Purchase the app and pay for repository maintenance</h5>
-          <ul class="mb-0">
-            <li>Receive customer support with Odoo experts</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+	<!-- ══ CHOOSE YOUR LEVEL OF SUPPORT ══ -->
+	<hr class="my-5">
+	<h3 class="fw-bold mb-3">Choose your level of support</h3>
+	<div class="row g-3">
+		<div class="col-md-6">
+			<div class="card h-100 border-start border-3 rounded-4 border-primary">
+				<div class="card-body">
+					<h5 class="card-title fw-bold mb-3">Purchase the app and self-manage the repository</h5>
+					<p class="mb-2">1-hour free meeting with an expert, to get:</p>
+					<ul class="mb-0">
+						<li>A tailored demonstration</li>
+						<li>Recommendations based on your needs</li>
+						<li>Answers to your questions about Odoo</li>
+						<li>Information about pricing &amp; methodology</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="card h-100 border-start border-3 rounded-4 border-primary">
+				<div class="card-body">
+					<h5 class="card-title fw-bold mb-3">Purchase the app and pay for repository maintenance</h5>
+					<ul class="mb-0">
+						<li>Receive customer support with Odoo experts</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <!-- ══ TRY IT OUT ══ -->
-  <hr class="my-5">
-  <h3 class="fw-bold mb-3 h1">Try it out</h3>
-  <p>Explore the module in action through the <strong>"Live Preview"</strong> option. You can access the full connector interface, configuration screens, synchronization settings, and operational flows using the credentials below:</p>
-  <ul>
-    <li><strong>Username:</strong> <code>user</code></li>
-    <li><strong>Password:</strong> <code>user</code></li>
-  </ul>
-  <p class="text-muted fst-italic small">*This is a demo environment intended for evaluation purposes only. Data may be reset periodically.</p>
+	<!-- ══ TRY IT OUT ══ -->
+	<hr class="my-5">
+	<h3 class="fw-bold mb-3">Try it out</h3>
+	<p>Explore the module in action through the <strong>"Live Preview"</strong> option. You can access the full
+		connector
+		interface, configuration screens, synchronization settings, and operational flows using the credentials below:
+	</p>
+	<ul>
+		<li><strong>Username:</strong> <code>user</code></li>
+		<li><strong>Password:</strong> <code>user</code></li>
+	</ul>
+	<p class="text-muted fst-italic small">*This is a demo environment intended for evaluation purposes only. Data may
+		be
+		reset periodically.</p>
 
-  <!-- ══ HOW IT WORKS ══ -->
-  <hr class="my-5">
-  <h3 class="fw-bold mb-3 h1">How it works</h3>
-  <div class="row g-3">
-    <div class="col-md-4">
-      <div class="card h-100 bg-light rounded-3">
-        <div class="card-body">
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="width: 44px; height: 44px; flex-shrink: 0;">
-              <img src="blue_card-2.png" alt="Purchase" style="width: 36px; height: 36px; object-fit: contain;">
-            </div>
-            <h5 class="card-title fw-bold mb-0">Purchase</h5>
-          </div>
-          <p class="card-text text-muted mb-0">Complete your purchase from the Odoo Apps Store.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card h-100 bg-light rounded-3">
-        <div class="card-body">
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="width: 44px; height: 44px; flex-shrink: 0;">
-              <img src="blue_file-spreadsheet.png" alt="Import products" style="width: 36px; height: 36px; object-fit: contain;">
-            </div>
-            <h5 class="card-title fw-bold mb-0">Import Shopify products to Odoo</h5>
-          </div>
-          <p class="card-text text-muted mb-0">Create your product catalog in Odoo first (with correct categories and taxes), then fetch from Shopify for SKU matching.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card h-100 bg-light rounded-3">
-        <div class="card-body">
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="width: 44px; height: 44px; flex-shrink: 0;">
-              <img src="blue_link.png" alt="Connect accounts" style="width: 36px; height: 36px; object-fit: contain;">
-            </div>
-            <h5 class="card-title fw-bold mb-0">Connect accounts</h5>
-          </div>
-          <p class="card-text text-muted mb-0">Follow the setup instructions and complete your first sync steps.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+	<!-- ══ HOW IT WORKS ══ -->
+	<hr class="my-5">
+	<h3 class="fw-bold mb-3">How it works</h3>
+	<div class="row g-3">
+		<div class="col-md-4">
+			<div class="card h-100 bg-light rounded-3">
+				<div class="card-body">
+					<div class="d-flex align-items-center gap-3 mb-3">
+						<div class="bg-white border rounded d-flex align-items-center justify-content-center"
+							style="width: 44px; height: 44px; flex-shrink: 0;">
+							<img src="blue_card-2.png" alt="Purchase"
+								style="width: 36px; height: 36px; object-fit: contain;" loading="lazy" decoding="async">
+						</div>
+						<h5 class="card-title fw-bold mb-0">Purchase</h5>
+					</div>
+					<p class="card-text text-muted mb-0">Complete your purchase from the Odoo Apps Store.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card h-100 bg-light rounded-3">
+				<div class="card-body">
+					<div class="d-flex align-items-center gap-3 mb-3">
+						<div class="bg-white border rounded d-flex align-items-center justify-content-center"
+							style="width: 44px; height: 44px; flex-shrink: 0;">
+							<img src="blue_file-spreadsheet.png" alt="Import products"
+								style="width: 36px; height: 36px; object-fit: contain;" loading="lazy" decoding="async">
+						</div>
+						<h5 class="card-title fw-bold mb-0">Import Shopify products to Odoo</h5>
+					</div>
+					<p class="card-text text-muted mb-0">Create your product catalog in Odoo first (with correct
+						categories and
+						taxes), then fetch from Shopify for SKU matching.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card h-100 bg-light rounded-3">
+				<div class="card-body">
+					<div class="d-flex align-items-center gap-3 mb-3">
+						<div class="bg-white border rounded d-flex align-items-center justify-content-center"
+							style="width: 44px; height: 44px; flex-shrink: 0;">
+							<img src="blue_link.png" alt="Connect accounts"
+								style="width: 36px; height: 36px; object-fit: contain;" loading="lazy" decoding="async">
+						</div>
+						<h5 class="card-title fw-bold mb-0">Connect accounts</h5>
+					</div>
+					<p class="card-text text-muted mb-0">Follow the setup instructions and complete your first sync
+						steps.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <!-- ══ SYNCHRONIZATION AT A GLANCE ══ -->
-  <hr class="my-5">
-  <h3 class="fw-bold mb-3 h1">Synchronization at a Glance</h3>
-  <p>What syncs, in which direction, and how often.</p>
-  <div class="table-responsive">
-    <table class="table table-bordered table-sm">
-      <thead class="table-light">
-        <tr>
-          <th>Data</th>
-          <th>Direction</th>
-          <th>Trigger</th>
-          <th>Frequency</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Orders</strong></td><td>Shopify → Odoo</td><td>Automatic or manual</td><td>Every 10 min</td></tr>
-        <tr><td><strong>Products</strong></td><td>Shopify → Odoo</td><td>Manual (Fetch Products)</td><td>On demand</td></tr>
-        <tr><td><strong>Inventory (Odoo → Shopify)</strong></td><td>Odoo → Shopify</td><td>Automatic after order pull</td><td>After each order sync</td></tr>
-        <tr><td><strong>Inventory (Shopify → Odoo)</strong></td><td>Shopify → Odoo</td><td>Manual (Fetch Inventory)</td><td>On demand only</td></tr>
-        <tr><td><strong>Fulfillments / Deliveries</strong></td><td>Both ways</td><td>Automatic</td><td>Every 10 min</td></tr>
-        <tr><td><strong>Returns</strong></td><td>Shopify → Odoo</td><td>Automatic during order pull</td><td>Each order sync</td></tr>
-        <tr><td><strong>Refunds / Credit Notes</strong></td><td>Shopify → Odoo</td><td>Automatic during order pull</td><td>Each order sync</td></tr>
-        <tr><td><strong>Invoices &amp; Payments</strong></td><td>Odoo (auto-created)</td><td>Automatic on paid order import</td><td>Each order sync</td></tr>
-        <tr><td><strong>Customers</strong></td><td>Shopify → Odoo</td><td>Automatic during order import</td><td>Each order sync</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="alert alert-warning">
-    <strong>⚠ Note:</strong> There is no real-time sync. NO webhooks are used. All synchronization runs on Odoo Scheduled Actions (cron jobs). Default intervals should not be modified without careful consideration.
-  </div>
+	<!-- ══ SYNCHRONIZATION AT A GLANCE ══ -->
+	<hr class="my-5">
+	<h3 class="fw-bold mb-3">Synchronization at a Glance</h3>
+	<p>What syncs, in which direction, and how often.</p>
+	<div class="table-responsive">
+		<table class="table table-bordered table-sm">
+			<thead class="table-light">
+				<tr>
+					<th scope="col">Data</th>
+					<th scope="col">Direction</th>
+					<th scope="col">Trigger</th>
+					<th scope="col">Frequency</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Orders</strong></td>
+					<td>Shopify → Odoo</td>
+					<td>Automatic or manual</td>
+					<td>Every 10 min</td>
+				</tr>
+				<tr>
+					<td><strong>Products</strong></td>
+					<td>Shopify → Odoo</td>
+					<td>Manual (Fetch Products)</td>
+					<td>On demand</td>
+				</tr>
+				<tr>
+					<td><strong>Inventory (Odoo → Shopify)</strong></td>
+					<td>Odoo → Shopify</td>
+					<td>Automatic after order pull</td>
+					<td>After each order sync</td>
+				</tr>
+				<tr>
+					<td><strong>Inventory (Shopify → Odoo)</strong></td>
+					<td>Shopify → Odoo</td>
+					<td>Manual (Fetch Inventory)</td>
+					<td>On demand only</td>
+				</tr>
+				<tr>
+					<td><strong>Fulfillments / Deliveries</strong></td>
+					<td>Both ways</td>
+					<td>Automatic</td>
+					<td>Every 10 min</td>
+				</tr>
+				<tr>
+					<td><strong>Returns</strong></td>
+					<td>Shopify → Odoo</td>
+					<td>Automatic during order pull</td>
+					<td>Each order sync</td>
+				</tr>
+				<tr>
+					<td><strong>Refunds / Credit Notes</strong></td>
+					<td>Shopify → Odoo</td>
+					<td>Automatic during order pull</td>
+					<td>Each order sync</td>
+				</tr>
+				<tr>
+					<td><strong>Invoices &amp; Payments</strong></td>
+					<td>Odoo (auto-created)</td>
+					<td>Automatic on paid order import</td>
+					<td>Each order sync</td>
+				</tr>
+				<tr>
+					<td><strong>Customers</strong></td>
+					<td>Shopify → Odoo</td>
+					<td>Automatic during order import</td>
+					<td>Each order sync</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="alert alert-warning">
+		<strong>⚠ Note:</strong> There is no real-time sync. NO webhooks are used. All synchronization runs on Odoo
+		Scheduled Actions (cron jobs). Default intervals should not be modified without careful consideration.
+	</div>
 
-  <!-- ══ FEATURE DETAILS — accordion ══ -->
-  <!-- <hr class="my-5">
-  <h3 class="fw-bold mb-3">Feature Details</h3>
-  <p>Each section lists what the connector does and what it doesn't. Click any section to expand.</p> -->
+	<!-- ══ FEATURE DETAILS — JS-free accordion using native <details>/<summary> ══ -->
+	<hr class="my-5">
+	<h3 class="fw-bold mb-3">Feature Details</h3>
+	<p>Each section lists what the connector does and what it doesn't. Click any section to expand.</p>
 
-   <!-- ══ FEATURE DETAILS — JS-free accordion using native <details>/<summary> ══ -->
-  <hr class="my-5">
-  <h3 class="fw-bold mb-3 h1">Feature Details</h3>
-  <p>Each section lists what the connector does and what it doesn't. Click any section to expand.</p>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details open>
-      <summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Connection &amp; Authentication</summary>
-      <div class="p-3 border-top">
-        <p>Two authentication methods are supported depending on your Shopify store's creation date.</p>
-        <h6 class="fw-bold text-success mt-3">✓ What it does</h6>
-        <ul>
-          <li><strong>OAuth connection</strong> — Required for stores created on or after 1 January 2026. The store owner grants Odoo access via an approved authorization flow. API scopes cover Orders, Products, Inventory, and Fulfillments.</li>
-          <li><strong>Custom App (Admin API Token)</strong> — Available for stores created before 1 January 2026. Uses credentials from a Shopify Custom App. Access is limited to the scopes configured in that app.</li>
-        </ul>
-        <h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
-        <ul>
-          <li><strong>Real-time sync</strong> — NO webhook-based sync. All synchronization runs on a scheduled cron job.</li>
-          <li><strong>Allow changes while connected</strong> — Account settings (warehouse, journals, taxes, etc.) cannot be changed while the connector is active. Disconnect, update the setting, then reconnect.</li>
-        </ul>
-      </div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Multi-Store &amp; Multi-Company</summary>
-      <div class="p-3 border-top">
-        <h6 class="fw-bold text-success mt-3">✓ What it does</h6>
-        <ul>
-          <li><strong>Multi-store support</strong> — Multiple Shopify stores can be connected under one or more Odoo companies.</li>
-          <li><strong>Separate configurations</strong> — Each Shopify store requires its own account configuration in Odoo.</li>
-          <li><strong>Multi-company environments</strong> — Supported with separate configurations per company.</li>
-          <li><strong>Independent sync tracking</strong> — Each account tracks its own sync timestamps and operates independently.</li>
-          <li><strong>Data scoping</strong> — Orders, products, and inventory are scoped to their connected store and do not bleed across accounts.</li>
-        </ul>
-      </div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Product Synchronization</summary>
-      <div class="p-3 border-top">
-        <p>Products flow <strong>one-way only: Shopify → Odoo</strong>. Product data is never pushed from Odoo to Shopify.</p>
-        <h6 class="fw-bold text-success mt-3">✓ What it does</h6>
-        <ul>
-          <li><strong>Product import</strong> — Pulls products from Shopify into Odoo and maps them by SKU. If a Shopify SKU matches an Odoo product's Internal Reference, they are linked automatically.</li>
-          <li><strong>Auto-create products</strong> — Creates a new product in Odoo when no matching SKU is found and "Create Products" is enabled.</li>
-          <li><strong>Incremental fetch</strong> — Only products created or updated since the last sync timestamp are fetched, keeping sync efficient.</li>
-        </ul>
-        <h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
-        <ul>
-          <li><strong>Push products to Shopify</strong> — Products cannot be created or updated in Shopify from Odoo. Product management must happen in Shopify.</li>
-          <li><strong>Map metafields</strong> — Shopify metafields are not mapped to Odoo fields.</li>
-          <li><strong>Import variants as variants</strong> — Shopify variants are not imported as Odoo variant lines. Each variant is created as a separate standalone product with its own SKU.</li>
-          <li><strong>Push categories or tax configuration</strong> — Product categories and tax configurations cannot be pushed from Odoo to Shopify. These must be set manually in Odoo, ideally before fetching.</li>
-        </ul>
-        <div class="alert alert-info mt-3">
-          <strong>💡 Best practice:</strong> create your product catalog in Odoo first (with correct categories and taxes), then fetch from Shopify for SKU matching rather than relying on auto-creation.
-        </div>
-      </div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Order Management</summary>
-      <div class="p-3 border-top">
-        <h6 class="fw-bold text-success mt-3">✓ What it does</h6>
-        <ul>
-          <li><strong>Order import (automatic)</strong> — Imports Shopify orders into Odoo on a scheduled basis as confirmed Sales Orders.</li>
-          <li><strong>Date-range order fetch</strong> — Manually fetch orders from a specific date range on demand.</li>
-          <li><strong>Customer matching</strong> — Matches Shopify customers to Odoo by email and billing name. Creates a new contact if no match is found.</li>
-          <li><strong>Currency detection</strong> — Automatically reads and applies the currency from each Shopify order.</li>
-          <li><strong>UTM tracking</strong> — Carries UTM campaign, source, and medium data from Shopify orders into the Odoo Sales Order.</li>
-          <li><strong>Order cancellation</strong> — Automatically cancels the Odoo sales order when the Shopify order is canceled. If delivery has already been created, a log note is added for manual review.</li>
-          <li><strong>Shipping line display</strong> — Shipping costs appear as a separate order line, with the customer's chosen carrier (FedEx, Shiprocket, Sendcloud, etc.) shown in the line description.</li>
-          <li><strong>Discount handling</strong> — Discounts are deducted from product or shipping prices before subtotal, minimizing rounding differences.</li>
-        </ul>
-        <h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
-        <ul>
-          <li><strong>Apply regional pricelists</strong> — Odoo pricelists (per region or customer group) are not applied during order import. Pricing reflects the Shopify order value as received.</li>
-          <li><strong>Backfill missing UTM data</strong> — UTM fields will be empty if the original Shopify order did not include UTM parameters.</li>
-        </ul>
-      </div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Inventory Synchronization</summary>
-      <div class="p-3 border-top">
-        <p><strong>Odoo → Shopify (automatic):</strong> After each order pull, the free quantity (on-hand minus reserved) at the mapped Odoo location is pushed to the corresponding Shopify location.</p>
-        <p><strong>Shopify → Odoo (manual only):</strong> Click "Fetch Inventory" under the Operations tab. On-hand quantity per product per location is updated in Odoo.</p>
-        <h6 class="fw-bold text-success mt-3">✓ What it does</h6>
-        <ul>
-          <li><strong>Inventory push (automatic)</strong> — Pushes stock from Odoo to Shopify automatically after each order sync.</li>
-          <li><strong>Inventory pull (manual)</strong> — Fetches current stock from Shopify into Odoo on demand via the Fetch Inventory button.</li>
-          <li><strong>Multi-location inventory</strong> — Maps multiple Shopify locations to corresponding Odoo stock locations.</li>
-          <li><strong>Granular sync controls</strong> — The Sync Stock toggle can be set per offer, per location, and per account.</li>
-        </ul>
-        <h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
-        <ul>
-          <li><strong>Pull inventory automatically</strong> — Pulling stock from Shopify into Odoo is not automatic. It must be triggered manually.</li>
-          <li><strong>Sync products with disabled tracking</strong> — If inventory tracking is disabled in Shopify for a product or location, sync for that product will fail. Because inventory is batch-updated, it may block other products in the same batch.</li>
-        </ul>
-        <div class="alert alert-warning mt-3">
-          <strong>⚠ Note:</strong> Ensure Odoo and Shopify inventory levels are manually aligned before your first sync to avoid discrepancies.
-        </div>
-      </div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Fulfillment &amp; Shipping</summary>
-      <div class="p-3 border-top">
-        <p>Two fulfillment modes are supported:</p>
-        <ul>
-          <li><strong>Handled in Odoo:</strong> Delivery is created in draft in Odoo. Once validated (with carrier and tracking number), a Scheduled Action pushes the shipment to Shopify every 10 minutes.</li>
-          <li><strong>Handled in Shopify:</strong> Fulfillment is created in Shopify and pulled into Odoo during sync.</li>
-        </ul>
-        <h6 class="fw-bold text-success mt-3">✓ What it does</h6>
-        <ul>
-          <li><strong>Fulfillment sync</strong> — Syncs fulfillment status and tracking numbers between Shopify and Odoo.</li>
-          <li><strong>Split fulfillments</strong> — Handles orders fulfilled in multiple shipments, from different locations or with different carriers, including partial quantities.</li>
-          <li><strong>Automatic carrier mapping</strong> — Carriers are mapped and created automatically in Odoo if they don't exist.</li>
-          <li><strong>Two-way tracking numbers</strong> — Tracking numbers are synchronized in both directions.</li>
-          <li><strong>Location mapping</strong> — Fulfillment locations from Shopify are mapped to Odoo warehouse locations automatically.</li>
-        </ul>
-        <h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
-        <ul>
-          <li><strong>Support custom fulfillment flows</strong> — Fulfillment flows outside of standard Shopify fulfillment are not supported.</li>
-        </ul>
-      </div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Accounting, Invoicing &amp; Payments</summary>
-      <div class="p-3 border-top">
-        <p>When "Create Invoice" is enabled, Odoo automatically creates and posts an invoice and registers payment for every order marked as fully paid in Shopify. Sales and payment journals can be configured per account.</p>
-        <h6 class="fw-bold text-success mt-3">✓ What it does</h6>
-        <ul>
-          <li><strong>Auto-invoicing</strong> — Creates and posts an invoice in Odoo when a Shopify order is marked as paid.</li>
-          <li><strong>Payment provider mapping</strong> — Maps Shopify payment providers (Stripe, PayPal, Razorpay, COD, Bank Transfer, etc.) to specific Odoo payment journals.</li>
-          <li><strong>Tax matching</strong> — Matches Shopify taxes to Odoo. Creates a new tax in Odoo if no match is found and "Create Taxes" is enabled.</li>
-          <li><strong>Rounding handling</strong> — Minor rounding differences between Shopify and Odoo totals are handled by adding a small adjustment line automatically.</li>
-        </ul>
-        <h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
-        <ul>
-          <li><strong>Auto-invoice with rounding adjustments</strong> — Orders with a rounding adjustment line will not auto-generate an invoice, even if paid. These must be invoiced manually.</li>
-          <li><strong>Apply inactive taxes</strong> — Inactive taxes in Odoo cannot be applied to imported orders. Orders matching an inactive tax will fail and log an error.</li>
-          <li><strong>Auto-invoice when "Create Invoice" is disabled</strong> — If the setting is off, invoices and payments must be created and registered manually.</li>
-        </ul>
-        <div class="alert alert-info mt-3">
-          <strong>💡 Note:</strong> Tax behavior (inclusive vs exclusive) is fetched directly from Shopify's tax configuration and applied automatically when creating taxes in Odoo.
-        </div>
-      </div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Returns &amp; Refunds</summary>
-      <div class="p-3 border-top">
-        <p><strong>Returns:</strong> Only returns with a "Closed" status in Shopify are synced. Each return is created in Draft state in Odoo for review before validation.</p>
-        <p><strong>Refunds:</strong> Credit notes are created in Odoo from Shopify refunds, linked to the original invoice. The refund date from Shopify is applied as the credit note date.</p>
-        <h6 class="fw-bold text-success mt-3">✓ What it does</h6>
-        <ul>
-          <li><strong>Sync closed returns</strong> — Imports closed Shopify returns into Odoo as draft records for review before processing.</li>
-          <li><strong>Refunds → credit notes</strong> — Creates a credit note in Odoo when a refund is issued in Shopify, linked to the original invoice.</li>
-          <li><strong>Split returns</strong> — If Shopify creates a single return spanning multiple fulfillments, Odoo splits it into separate return records.</li>
-          <li><strong>Manual refunds</strong> — Manual refunds in Shopify (without return lines) generate a credit note with a single adjustment line.</li>
-          <li><strong>Refund total alignment</strong> — If the refund total differs from Odoo's calculated amount, an adjustment line is added automatically to match Shopify's figure exactly.</li>
-        </ul>
-        <h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
-        <ul>
-          <li><strong>Sync in-progress returns</strong> — Returns with an "In Progress" status in Shopify are not synced. Only closed returns are imported.</li>
-          <li><strong>Sync returns when Odoo handles delivery</strong> — If delivery is managed in Odoo, Shopify returns do not sync automatically and must be processed manually.</li>
-          <li><strong>Auto-cancel synced returns</strong> — If a return is canceled in Shopify after being synced, Odoo will not cancel it automatically. An activity is created in Odoo for manual cancellation and stock adjustment.</li>
-          <li><strong>Create credit notes for unposted or multi-invoice orders</strong> — A credit note is only created if the order has exactly one posted (validated) invoice.</li>
-        </ul>
-        <div class="alert alert-info mt-3">
-          <strong>💡 Tip:</strong> Always select "Restocked" when closing a return in Shopify — without it, Shopify stock won't reduce but Odoo stock will.
-        </div>
-      </div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Monitoring &amp; Troubleshooting</summary>
-      <div class="p-3 border-top">
-        <h6 class="fw-bold text-success mt-3">✓ What it does</h6>
-        <ul>
-          <li><strong>Email alerts</strong> — Sends notifications to the assigned Salesperson or Administrator when an order import, stock update, or fulfillment sync fails.</li>
-          <li><strong>Order recovery</strong> — Manually re-fetch a specific failed order using its Shopify Order Reference via the Recover Order action.</li>
-          <li><strong>API logs</strong> — Detailed API logs are available via the Logs smart button on the account (visible in Debug Mode — enable with Ctrl+K and type "debug").</li>
-          <li><strong>Scheduled activities</strong> — Activities are scheduled on records when manual intervention is needed (e.g., address mapping failure, cancelled return, missing refund data).</li>
-        </ul>
-      </div>
-    </details>
-  </div>
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details open>
+			<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Connection &amp;
+				Authentication
+			</summary>
+			<div class="p-3 border-top">
+				<p>Two authentication methods are supported depending on your Shopify store's creation date.</p>
+				<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+				<ul>
+					<li><strong>OAuth connection</strong> — Required for stores created on or after 1 January 2026. The
+						store
+						owner grants Odoo access via an approved authorization flow. API scopes cover Orders, Products,
+						Inventory,
+						and Fulfillments.</li>
+					<li><strong>Custom App (Admin API Token)</strong> — Available for stores created before 1 January
+						2026. Uses
+						credentials from a Shopify Custom App. Access is limited to the scopes configured in that app.
+					</li>
+				</ul>
+				<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+				<ul>
+					<li><strong>Real-time sync</strong> — NO webhook-based sync. All synchronization runs on a scheduled
+						cron job.
+					</li>
+					<li><strong>Allow changes while connected</strong> — Account settings (warehouse, journals, taxes,
+						etc.)
+						cannot be changed while the connector is active. Disconnect, update the setting, then reconnect.
+					</li>
+				</ul>
+			</div>
+		</details>
+	</div>
 
-  <!-- ══ FUNCTIONAL Q&A — JS-free accordion using native <details>/<summary> ══ -->
-  <hr class="my-5">
-  <h3 class="fw-bold mb-3 h1">Functional Q&amp;A</h3>
-  <p>Quick answers for the most frequent functional questions that come up during pre-sales evaluations.</p>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details open>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">1</span>
-        <span class="flex-grow-1">"Does the integration automatically map Shopify metafields to Odoo?"</span>
-        <span class="badge bg-danger rounded-1 text-white">NO</span>
-      </summary>
-      <div class="p-3 border-top">Metafield mapping is not supported. Only standard Shopify fields (orders, products, inventory, fulfillments) are synchronized.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">2</span>
-        <span class="flex-grow-1">"Does it support different pricelists per region or customer group?"</span>
-        <span class="badge bg-danger rounded-1 text-white">NO</span>
-      </summary>
-      <div class="p-3 border-top">Pricing is taken directly from the Shopify order as received. Region-based or customer-group pricelists in Odoo are not applied during order import.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">3</span>
-        <span class="flex-grow-1">"Is synchronization real-time / webhook-based?"</span>
-        <span class="badge bg-danger rounded-1 text-white">NO</span>
-      </summary>
-      <div class="p-3 border-top">All sync runs on Odoo's Scheduled Actions (cron). Orders and deliveries sync every 10 minutes. There are no webhooks or instant triggers.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">4</span>
-        <span class="flex-grow-1">"Can we push products from Odoo to Shopify?"</span>
-        <span class="badge bg-danger rounded-1 text-white">NO</span>
-      </summary>
-      <div class="p-3 border-top">Products flow one-way: Shopify → Odoo only. Product creation and management must happen in Shopify.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">5</span>
-        <span class="flex-grow-1">"Does inventory sync automatically in both directions?"</span>
-        <span class="badge bg-warning rounded-1  text-white">PARTIAL</span>
-      </summary>
-      <div class="p-3 border-top">Odoo pushes stock to Shopify automatically after each order sync. Pulling inventory from Shopify to Odoo is manual only (Fetch Inventory button).</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">6</span>
-        <span class="flex-grow-1">"Can we connect multiple Shopify stores to one Odoo instance?"</span>
-        <span class="badge bg-success rounded-1 text-white">YES</span>
-      </summary>
-      <div class="p-3 border-top">Multiple Shopify stores can be configured under the same Odoo company. Multi-company setups are also supported.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">7</span>
-        <span class="flex-grow-1">"Does it handle returns and refunds from Shopify?"</span>
-        <span class="badge bg-success rounded-1 text-white">YES</span>
-      </summary>
-      <div class="p-3 border-top">For closed returns fulfilled via the Shopify ecommerce account. Returns are created in draft in Odoo. Refunds generate credit notes linked to the original invoice.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">8</span>
-        <span class="flex-grow-1">"Does it automatically create invoices in Odoo?"</span>
-        <span class="badge bg-warning rounded-1  text-white">PARTIAL</span>
-      </summary>
-      <div class="p-3 border-top">YES when "Create Invoice" is enabled and the order is fully paid. However, orders with rounding adjustments will not auto-invoice and require manual invoicing.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">9</span>
-        <span class="flex-grow-1">"Can payment providers (Stripe, PayPal, COD) map to different Odoo journals?"</span>
-        <span class="badge bg-success rounded-1 text-white">YES</span>
-      </summary>
-      <div class="p-3 border-top">Incoming payment methods in the configured journal can be mapped to specific providers. Odoo selects the correct method based on what the customer used in Shopify.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">10</span>
-        <span class="flex-grow-1">"Are Shopify product variants imported as Odoo variants?"</span>
-        <span class="badge bg-danger rounded-1 text-white">NO</span>
-      </summary>
-      <div class="p-3 border-top">Each Shopify variant has its own SKU and is created as a separate standalone product in Odoo, not as a variant under a shared product template.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">11</span>
-        <span class="flex-grow-1">"Does it support split fulfillments with different carriers?"</span>
-        <span class="badge bg-success rounded-1 text-white">YES</span>
-      </summary>
-      <div class="p-3 border-top">When fulfillment is handled in Shopify. Split fulfillments across multiple locations, carriers, and partial quantities are fully supported.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">12</span>
-        <span class="flex-grow-1">"Can we track which marketing campaign drove a Shopify order?"</span>
-        <span class="badge bg-success rounded-1 text-white">YES</span>
-      </summary>
-      <div class="p-3 border-top">UTM campaign, source, and medium are stored on the Sales Order in Odoo — but only if UTM parameters were present in the original Shopify order.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">13</span>
-        <span class="flex-grow-1">"Does the connector handle taxes automatically?"</span>
-        <span class="badge bg-success rounded-1 text-white">YES</span>
-      </summary>
-      <div class="p-3 border-top">Odoo matches Shopify taxes by name, amount, and type. If no match is found and "Create Taxes" is enabled, a new tax is created. Tax inclusion behavior is fetched from Shopify.</div>
-    </details>
-  </div>
- 
-  <div class="border rounded-3 mb-2 overflow-hidden">
-    <details>
-      <summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
-        <span class="badge rounded-pill bg-primary text-white">14</span>
-        <span class="flex-grow-1">"Can we change account settings (warehouse, journal) without reconnecting?"</span>
-        <span class="badge bg-danger rounded-1 text-white">NO</span>
-      </summary>
-      <div class="p-3 border-top">Configuration fields cannot be changed while the connector is active. Disconnect, apply changes, then reconnect.</div>
-    </details>
-  </div>
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Multi-Store &amp;
+				Multi-Company
+			</summary>
+			<div class="p-3 border-top">
+				<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+				<ul>
+					<li><strong>Multi-store support</strong> — Multiple Shopify stores can be connected under one or
+						more Odoo
+						companies.</li>
+					<li><strong>Separate configurations</strong> — Each Shopify store requires its own account
+						configuration in
+						Odoo.</li>
+					<li><strong>Multi-company environments</strong> — Supported with separate configurations per
+						company.</li>
+					<li><strong>Independent sync tracking</strong> — Each account tracks its own sync timestamps and
+						operates
+						independently.</li>
+					<li><strong>Data scoping</strong> — Orders, products, and inventory are scoped to their connected
+						store and do
+						not bleed across accounts.</li>
+				</ul>
+			</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Product Synchronization
+			</summary>
+			<div class="p-3 border-top">
+				<p>Products flow <strong>one-way only: Shopify → Odoo</strong>. Product data is never pushed from Odoo
+					to
+					Shopify.</p>
+				<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+				<ul>
+					<li><strong>Product import</strong> — Pulls products from Shopify into Odoo and maps them by SKU. If
+						a Shopify
+						SKU matches an Odoo product's Internal Reference, they are linked automatically.</li>
+					<li><strong>Auto-create products</strong> — Creates a new product in Odoo when no matching SKU is
+						found and
+						"Create Products" is enabled.</li>
+					<li><strong>Incremental fetch</strong> — Only products created or updated since the last sync
+						timestamp are
+						fetched, keeping sync efficient.</li>
+				</ul>
+				<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+				<ul>
+					<li><strong>Push products to Shopify</strong> — Products cannot be created or updated in Shopify
+						from Odoo.
+						Product management must happen in Shopify.</li>
+					<li><strong>Map metafields</strong> — Shopify metafields are not mapped to Odoo fields.</li>
+					<li><strong>Import variants as variants</strong> — Shopify variants are not imported as Odoo variant
+						lines.
+						Each variant is created as a separate standalone product with its own SKU.</li>
+					<li><strong>Push categories or tax configuration</strong> — Product categories and tax
+						configurations cannot
+						be pushed from Odoo to Shopify. These must be set manually in Odoo, ideally before fetching.
+					</li>
+				</ul>
+				<div class="alert alert-info mt-3">
+					<strong>💡 Best practice:</strong> create your product catalog in Odoo first (with correct
+					categories and
+					taxes), then fetch from Shopify for SKU matching rather than relying on auto-creation.
+				</div>
+			</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Order Management</summary>
+			<div class="p-3 border-top">
+				<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+				<ul>
+					<li><strong>Order import (automatic)</strong> — Imports Shopify orders into Odoo on a scheduled
+						basis as
+						confirmed Sales Orders.</li>
+					<li><strong>Date-range order fetch</strong> — Manually fetch orders from a specific date range on
+						demand.</li>
+					<li><strong>Customer matching</strong> — Matches Shopify customers to Odoo by email and billing
+						name. Creates
+						a new contact if no match is found.</li>
+					<li><strong>Currency detection</strong> — Automatically reads and applies the currency from each
+						Shopify
+						order.</li>
+					<li><strong>UTM tracking</strong> — Carries UTM campaign, source, and medium data from Shopify
+						orders into the
+						Odoo Sales Order.</li>
+					<li><strong>Order cancellation</strong> — Automatically cancels the Odoo sales order when the
+						Shopify order is
+						canceled. If delivery has already been created, a log note is added for manual review.</li>
+					<li><strong>Shipping line display</strong> — Shipping costs appear as a separate order line, with
+						the
+						customer's chosen carrier (FedEx, Shiprocket, Sendcloud, etc.) shown in the line description.
+					</li>
+					<li><strong>Discount handling</strong> — Discounts are deducted from product or shipping prices
+						before
+						subtotal, minimizing rounding differences.</li>
+				</ul>
+				<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+				<ul>
+					<li><strong>Apply regional pricelists</strong> — Odoo pricelists (per region or customer group) are
+						not
+						applied during order import. Pricing reflects the Shopify order value as received.</li>
+					<li><strong>Backfill missing UTM data</strong> — UTM fields will be empty if the original Shopify
+						order did
+						not include UTM parameters.</li>
+				</ul>
+			</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Inventory Synchronization
+			</summary>
+			<div class="p-3 border-top">
+				<p><strong>Odoo → Shopify (automatic):</strong> After each order pull, the free quantity (on-hand minus
+					reserved) at the mapped Odoo location is pushed to the corresponding Shopify location.</p>
+				<p><strong>Shopify → Odoo (manual only):</strong> Click "Fetch Inventory" under the Operations tab.
+					On-hand
+					quantity per product per location is updated in Odoo.</p>
+				<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+				<ul>
+					<li><strong>Inventory push (automatic)</strong> — Pushes stock from Odoo to Shopify automatically
+						after each
+						order sync.</li>
+					<li><strong>Inventory pull (manual)</strong> — Fetches current stock from Shopify into Odoo on
+						demand via the
+						Fetch Inventory button.</li>
+					<li><strong>Multi-location inventory</strong> — Maps multiple Shopify locations to corresponding
+						Odoo stock
+						locations.</li>
+					<li><strong>Granular sync controls</strong> — The Sync Stock toggle can be set per offer, per
+						location, and
+						per account.</li>
+				</ul>
+				<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+				<ul>
+					<li><strong>Pull inventory automatically</strong> — Pulling stock from Shopify into Odoo is not
+						automatic. It
+						must be triggered manually.</li>
+					<li><strong>Sync products with disabled tracking</strong> — If inventory tracking is disabled in
+						Shopify for a
+						product or location, sync for that product will fail. Because inventory is batch-updated, it may
+						block other
+						products in the same batch.</li>
+				</ul>
+				<div class="alert alert-warning mt-3">
+					<strong>⚠ Note:</strong> Ensure Odoo and Shopify inventory levels are manually aligned before your
+					first sync
+					to avoid discrepancies.
+				</div>
+			</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Fulfillment &amp; Shipping
+			</summary>
+			<div class="p-3 border-top">
+				<p>Two fulfillment modes are supported:</p>
+				<ul>
+					<li><strong>Handled in Odoo:</strong> Delivery is created in draft in Odoo. Once validated (with
+						carrier and
+						tracking number), a Scheduled Action pushes the shipment to Shopify every 10 minutes.</li>
+					<li><strong>Handled in Shopify:</strong> Fulfillment is created in Shopify and pulled into Odoo
+						during sync.
+					</li>
+				</ul>
+				<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+				<ul>
+					<li><strong>Fulfillment sync</strong> — Syncs fulfillment status and tracking numbers between
+						Shopify and
+						Odoo.</li>
+					<li><strong>Split fulfillments</strong> — Handles orders fulfilled in multiple shipments, from
+						different
+						locations or with different carriers, including partial quantities.</li>
+					<li><strong>Automatic carrier mapping</strong> — Carriers are mapped and created automatically in
+						Odoo if they
+						don't exist.</li>
+					<li><strong>Two-way tracking numbers</strong> — Tracking numbers are synchronized in both
+						directions.</li>
+					<li><strong>Location mapping</strong> — Fulfillment locations from Shopify are mapped to Odoo
+						warehouse
+						locations automatically.</li>
+				</ul>
+				<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+				<ul>
+					<li><strong>Support custom fulfillment flows</strong> — Fulfillment flows outside of standard
+						Shopify
+						fulfillment are not supported.</li>
+				</ul>
+			</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Accounting, Invoicing &amp;
+				Payments</summary>
+			<div class="p-3 border-top">
+				<p>When "Create Invoice" is enabled, Odoo automatically creates and posts an invoice and registers
+					payment for
+					every order marked as fully paid in Shopify. Sales and payment journals can be configured per
+					account.</p>
+				<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+				<ul>
+					<li><strong>Auto-invoicing</strong> — Creates and posts an invoice in Odoo when a Shopify order is
+						marked as
+						paid.</li>
+					<li><strong>Payment provider mapping</strong> — Maps Shopify payment providers (Stripe, PayPal,
+						Razorpay, COD,
+						Bank Transfer, etc.) to specific Odoo payment journals.</li>
+					<li><strong>Tax matching</strong> — Matches Shopify taxes to Odoo. Creates a new tax in Odoo if no
+						match is
+						found and "Create Taxes" is enabled.</li>
+					<li><strong>Rounding handling</strong> — Minor rounding differences between Shopify and Odoo totals
+						are
+						handled by adding a small adjustment line automatically.</li>
+				</ul>
+				<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+				<ul>
+					<li><strong>Auto-invoice with rounding adjustments</strong> — Orders with a rounding adjustment line
+						will not
+						auto-generate an invoice, even if paid. These must be invoiced manually.</li>
+					<li><strong>Apply inactive taxes</strong> — Inactive taxes in Odoo cannot be applied to imported
+						orders.
+						Orders matching an inactive tax will fail and log an error.</li>
+					<li><strong>Auto-invoice when "Create Invoice" is disabled</strong> — If the setting is off,
+						invoices and
+						payments must be created and registered manually.</li>
+				</ul>
+				<div class="alert alert-info mt-3">
+					<strong>💡 Note:</strong> Tax behavior (inclusive vs exclusive) is fetched directly from Shopify's
+					tax
+					configuration and applied automatically when creating taxes in Odoo.
+				</div>
+			</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Returns &amp; Refunds
+			</summary>
+			<div class="p-3 border-top">
+				<p><strong>Returns:</strong> Only returns with a "Closed" status in Shopify are synced. Each return is
+					created
+					in Draft state in Odoo for review before validation.</p>
+				<p><strong>Refunds:</strong> Credit notes are created in Odoo from Shopify refunds, linked to the
+					original
+					invoice. The refund date from Shopify is applied as the credit note date.</p>
+				<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+				<ul>
+					<li><strong>Sync closed returns</strong> — Imports closed Shopify returns into Odoo as draft records
+						for
+						review before processing.</li>
+					<li><strong>Refunds → credit notes</strong> — Creates a credit note in Odoo when a refund is issued
+						in
+						Shopify, linked to the original invoice.</li>
+					<li><strong>Split returns</strong> — If Shopify creates a single return spanning multiple
+						fulfillments, Odoo
+						splits it into separate return records.</li>
+					<li><strong>Manual refunds</strong> — Manual refunds in Shopify (without return lines) generate a
+						credit note
+						with a single adjustment line.</li>
+					<li><strong>Refund total alignment</strong> — If the refund total differs from Odoo's calculated
+						amount, an
+						adjustment line is added automatically to match Shopify's figure exactly.</li>
+				</ul>
+				<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+				<ul>
+					<li><strong>Sync in-progress returns</strong> — Returns with an "In Progress" status in Shopify are
+						not
+						synced. Only closed returns are imported.</li>
+					<li><strong>Sync returns when Odoo handles delivery</strong> — If delivery is managed in Odoo,
+						Shopify returns
+						do not sync automatically and must be processed manually.</li>
+					<li><strong>Auto-cancel synced returns</strong> — If a return is canceled in Shopify after being
+						synced, Odoo
+						will not cancel it automatically. An activity is created in Odoo for manual cancellation and
+						stock
+						adjustment.</li>
+					<li><strong>Create credit notes for unposted or multi-invoice orders</strong> — A credit note is
+						only created
+						if the order has exactly one posted (validated) invoice.</li>
+				</ul>
+				<div class="alert alert-info mt-3">
+					<strong>💡 Tip:</strong> Always select "Restocked" when closing a return in Shopify — without it,
+					Shopify
+					stock won't reduce but Odoo stock will.
+				</div>
+			</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Monitoring &amp;
+				Troubleshooting
+			</summary>
+			<div class="p-3 border-top">
+				<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+				<ul>
+					<li><strong>Email alerts</strong> — Sends notifications to the assigned Salesperson or Administrator
+						when an
+						order import, stock update, or fulfillment sync fails.</li>
+					<li><strong>Order recovery</strong> — Manually re-fetch a specific failed order using its Shopify
+						Order
+						Reference via the Recover Order action.</li>
+					<li><strong>API logs</strong> — Detailed API logs are available via the Logs smart button on the
+						account
+						(visible in Debug Mode — enable with Ctrl+K and type "debug").</li>
+					<li><strong>Scheduled activities</strong> — Activities are scheduled on records when manual
+						intervention is
+						needed (e.g., address mapping failure, cancelled return, missing refund data).</li>
+				</ul>
+			</div>
+		</details>
+	</div>
+
+	<!-- ══ FUNCTIONAL Q&A — JS-free accordion using native <details>/<summary> ══ -->
+	<hr class="my-5">
+	<h3 class="fw-bold mb-3">Functional Q&amp;A</h3>
+	<p>Quick answers for the most frequent functional questions that come up during pre-sales evaluations.</p>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details open>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">1</span>
+				<span class="flex-grow-1">"Does the integration automatically map Shopify metafields to Odoo?"</span>
+				<span class="badge bg-danger rounded-1 text-white">NO</span>
+			</summary>
+			<div class="p-3 border-top">Metafield mapping is not supported. Only standard Shopify fields (orders,
+				products,
+				inventory, fulfillments) are synchronized.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">2</span>
+				<span class="flex-grow-1">"Does it support different pricelists per region or customer group?"</span>
+				<span class="badge bg-danger rounded-1 text-white">NO</span>
+			</summary>
+			<div class="p-3 border-top">Pricing is taken directly from the Shopify order as received. Region-based or
+				customer-group pricelists in Odoo are not applied during order import.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">3</span>
+				<span class="flex-grow-1">"Is synchronization real-time / webhook-based?"</span>
+				<span class="badge bg-danger rounded-1 text-white">NO</span>
+			</summary>
+			<div class="p-3 border-top">All sync runs on Odoo's Scheduled Actions (cron). Orders and deliveries sync
+				every 10
+				minutes. There are no webhooks or instant triggers.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">4</span>
+				<span class="flex-grow-1">"Can we push products from Odoo to Shopify?"</span>
+				<span class="badge bg-danger rounded-1 text-white">NO</span>
+			</summary>
+			<div class="p-3 border-top">Products flow one-way: Shopify → Odoo only. Product creation and management must
+				happen in Shopify.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">5</span>
+				<span class="flex-grow-1">"Does inventory sync automatically in both directions?"</span>
+				<span class="badge bg-warning rounded-1  text-white">PARTIAL</span>
+			</summary>
+			<div class="p-3 border-top">Odoo pushes stock to Shopify automatically after each order sync. Pulling
+				inventory
+				from Shopify to Odoo is manual only (Fetch Inventory button).</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">6</span>
+				<span class="flex-grow-1">"Can we connect multiple Shopify stores to one Odoo instance?"</span>
+				<span class="badge bg-success rounded-1 text-white">YES</span>
+			</summary>
+			<div class="p-3 border-top">Multiple Shopify stores can be configured under the same Odoo company.
+				Multi-company
+				setups are also supported.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">7</span>
+				<span class="flex-grow-1">"Does it handle returns and refunds from Shopify?"</span>
+				<span class="badge bg-success rounded-1 text-white">YES</span>
+			</summary>
+			<div class="p-3 border-top">For closed returns fulfilled via the Shopify ecommerce account. Returns are
+				created in
+				draft in Odoo. Refunds generate credit notes linked to the original invoice.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">8</span>
+				<span class="flex-grow-1">"Does it automatically create invoices in Odoo?"</span>
+				<span class="badge bg-warning rounded-1  text-white">PARTIAL</span>
+			</summary>
+			<div class="p-3 border-top">YES when "Create Invoice" is enabled and the order is fully paid. However,
+				orders with
+				rounding adjustments will not auto-invoice and require manual invoicing.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">9</span>
+				<span class="flex-grow-1">"Can payment providers (Stripe, PayPal, COD) map to different Odoo
+					journals?"</span>
+				<span class="badge bg-success rounded-1 text-white">YES</span>
+			</summary>
+			<div class="p-3 border-top">Incoming payment methods in the configured journal can be mapped to specific
+				providers. Odoo selects the correct method based on what the customer used in Shopify.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">10</span>
+				<span class="flex-grow-1">"Are Shopify product variants imported as Odoo variants?"</span>
+				<span class="badge bg-danger rounded-1 text-white">NO</span>
+			</summary>
+			<div class="p-3 border-top">Each Shopify variant has its own SKU and is created as a separate standalone
+				product
+				in Odoo, not as a variant under a shared product template.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">11</span>
+				<span class="flex-grow-1">"Does it support split fulfillments with different carriers?"</span>
+				<span class="badge bg-success rounded-1 text-white">YES</span>
+			</summary>
+			<div class="p-3 border-top">When fulfillment is handled in Shopify. Split fulfillments across multiple
+				locations,
+				carriers, and partial quantities are fully supported.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">12</span>
+				<span class="flex-grow-1">"Can we track which marketing campaign drove a Shopify order?"</span>
+				<span class="badge bg-success rounded-1 text-white">YES</span>
+			</summary>
+			<div class="p-3 border-top">UTM campaign, source, and medium are stored on the Sales Order in Odoo — but
+				only if
+				UTM parameters were present in the original Shopify order.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">13</span>
+				<span class="flex-grow-1">"Does the connector handle taxes automatically?"</span>
+				<span class="badge bg-success rounded-1 text-white">YES</span>
+			</summary>
+			<div class="p-3 border-top">Odoo matches Shopify taxes by name, amount, and type. If no match is found and
+				"Create
+				Taxes" is enabled, a new tax is created. Tax inclusion behavior is fetched from Shopify.</div>
+		</details>
+	</div>
+
+	<div class="border rounded-3 mb-2 overflow-hidden">
+		<details>
+			<summary class="p-3 d-flex align-items-center gap-3" style="cursor: pointer; background-color: #f8f9fa;">
+				<span class="badge rounded-pill bg-primary text-white">14</span>
+				<span class="flex-grow-1">"Can we change account settings (warehouse, journal) without
+					reconnecting?"</span>
+				<span class="badge bg-danger rounded-1 text-white">NO</span>
+			</summary>
+			<div class="p-3 border-top">Configuration fields cannot be changed while the connector is active.
+				Disconnect,
+				apply changes, then reconnect.</div>
+		</details>
+	</div>
 
 
-  <!-- SUGGESTED PRODUCTS -->
-  <hr class="my-5">
-    <section class="container mt32" style="max-width:1000px;">
-        <h3 class="oe_slogan text-center" style="margin:24px auto; text-transform:uppercase;">
-            <b>Suggested Products</b>
-        </h3>
+	<!-- SUGGESTED PRODUCTS -->
+	<hr class="my-5">
+	<section class="container mt32" style="max-width:1000px;">
+		<h2 class="oe_slogan text-center" style="margin:24px auto; text-transform:uppercase;">
+			<b>Suggested Products</b>
+		</h2>
 
-        <div id="demo" class="carousel slide mt64 mb32" data-bs-ride="carousel" data-bs-interval="4000"
-            style="position:relative; padding:0 64px;">
+		<div id="demo" class="carousel slide mt64 mb32" data-bs-ride="carousel" data-bs-interval="4000"
+			style="position:relative; padding:0 64px;">
 
-            <div class="carousel-inner">
+			<div class="carousel-inner">
 
-                <!-- Slide 1 -->
-                <div class="carousel-item active" style="min-height:280px;">
-                    <div class="row">
+				<!-- Slide 1 -->
+				<div class="carousel-item active" style="min-height:280px;">
+					<div class="row">
 
-                        <div class="col-xs-12 col-sm-6 mb16">
-                            <a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_bigcommerce" target="_blank"
-                                style="text-decoration:none; color:inherit;">
-                                <div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
-                                    <img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_bigcommerce/banner.jpg"
-                                        class="img img-responsive" style="width:100%;">
-                                    <h4 style="padding:16px; text-align:center; font-weight:600;">
-                                        BigCommerce
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
+						<div class="col-xs-12 col-sm-6 mb16">
+							<a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_bigcommerce" target="_blank"
+								rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+								<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+									<img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_bigcommerce/banner.jpg"
+										class="img img-responsive" style="width:100%;" alt="BigCommerce connector"
+										loading="lazy" decoding="async">
+									<h4 style="padding:16px; text-align:center; font-weight:600;">
+										BigCommerce
+									</h4>
+								</div>
+							</a>
+						</div>
 
-                        <div class="col-xs-12 col-sm-6 mb16">
-                            <a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_magento" target="_blank"
-                                style="text-decoration:none; color:inherit;">
-                                <div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
-                                    <img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_magento/banner.jpg"
-                                        class="img img-responsive" style="width:100%;">
-                                    <h4 style="padding:16px; text-align:center; font-weight:600;">
-                                        Magento
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
+						<div class="col-xs-12 col-sm-6 mb16">
+							<a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_magento" target="_blank"
+								rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+								<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+									<img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_magento/banner.jpg"
+										class="img img-responsive" style="width:100%;" alt="Magento connector"
+										loading="lazy" decoding="async">
+									<h4 style="padding:16px; text-align:center; font-weight:600;">
+										Magento
+									</h4>
+								</div>
+							</a>
+						</div>
 
-                    </div>
-                </div>
+					</div>
+				</div>
 
-                <!-- Slide 2 -->
-                <div class="carousel-item" style="min-height:280px;">
-                    <div class="row">
+				<!-- Slide 2 -->
+				<div class="carousel-item" style="min-height:280px;">
+					<div class="row">
 
-                        <div class="col-xs-12 col-sm-6 mb16">
-                            <a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_prestashop" target="_blank"
-                                style="text-decoration:none; color:inherit;">
-                                <div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
-                                    <img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_prestashop/banner.jpg"
-                                        class="img img-responsive" style="width:100%;">
-                                    <h4 style="padding:16px; text-align:center; font-weight:600;">
-                                        PrestaShop
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
+						<div class="col-xs-12 col-sm-6 mb16">
+							<a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_prestashop" target="_blank"
+								rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+								<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+									<img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_prestashop/banner.jpg"
+										class="img img-responsive" style="width:100%;" alt="PrestaShop connector"
+										loading="lazy" decoding="async">
+									<h4 style="padding:16px; text-align:center; font-weight:600;">
+										PrestaShop
+									</h4>
+								</div>
+							</a>
+						</div>
 
-                        <div class="col-xs-12 col-sm-6 mb16">
-                            <a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_woocommerce" target="_blank"
-                                style="text-decoration:none; color:inherit;">
-                                <div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
-                                    <img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_woocommerce/banner.jpg"
-                                        class="img img-responsive" style="width:100%;">
-                                    <h4 style="padding:16px; text-align:center; font-weight:600;">
-                                        WooCommerce
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
+						<div class="col-xs-12 col-sm-6 mb16">
+							<a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_woocommerce" target="_blank"
+								rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+								<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+									<img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_woocommerce/banner.jpg"
+										class="img img-responsive" style="width:100%;" alt="WooCommerce connector"
+										loading="lazy" decoding="async">
+									<h4 style="padding:16px; text-align:center; font-weight:600;">
+										WooCommerce
+									</h4>
+								</div>
+							</a>
+						</div>
 
-                    </div>
-                </div>
+					</div>
+				</div>
 
-                <!-- Slide 3 -->
-                <div class="carousel-item" style="min-height:280px;">
-                    <div class="row">
+				<!-- Slide 3 -->
+				<div class="carousel-item" style="min-height:280px;">
+					<div class="row">
 
-                        <div class="col-xs-12 col-sm-6 mb16">
-                            <a href="https://apps.odoo.com/apps/modules/19.0/sale_unicommerce" target="_blank"
-                                style="text-decoration:none; color:inherit;">
-                                <div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
-                                    <img src="//apps.odoocdn.com/apps/assets/19.0/sale_unicommerce/banner.jpg"
-                                        class="img img-responsive" style="width:100%;">
-                                    <h4 style="padding:16px; text-align:center; font-weight:600;">
-                                        UniCommerce
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
+						<div class="col-xs-12 col-sm-6 mb16">
+							<a href="https://apps.odoo.com/apps/modules/19.0/sale_unicommerce" target="_blank"
+								rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+								<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+									<img src="//apps.odoocdn.com/apps/assets/19.0/sale_unicommerce/banner.jpg"
+										class="img img-responsive" style="width:100%;" alt="UniCommerce connector"
+										loading="lazy" decoding="async">
+									<h4 style="padding:16px; text-align:center; font-weight:600;">
+										UniCommerce
+									</h4>
+								</div>
+							</a>
+						</div>
 
-                        <div class="col-xs-12 col-sm-6 mb16">
-                            <a href="https://apps.odoo.com/apps/modules/19.0/sale_easyecom" target="_blank"
-                                style="text-decoration:none; color:inherit;">
-                                <div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
-                                    <img src="//apps.odoocdn.com/apps/assets/19.0/sale_easyecom/banner.jpg"
-                                        class="img img-responsive" style="width:100%;">
-                                    <h4 style="padding:16px; text-align:center; font-weight:600;">
-                                        EasyEcom
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
+						<div class="col-xs-12 col-sm-6 mb16">
+							<a href="https://apps.odoo.com/apps/modules/19.0/sale_easyecom" target="_blank"
+								rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+								<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+									<img src="//apps.odoocdn.com/apps/assets/19.0/sale_easyecom/banner.jpg"
+										class="img img-responsive" style="width:100%;" alt="EasyEcom connector"
+										loading="lazy" decoding="async">
+									<h4 style="padding:16px; text-align:center; font-weight:600;">
+										EasyEcom
+									</h4>
+								</div>
+							</a>
+						</div>
 
-                    </div>
-                </div>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-            <a class="carousel-control-prev" href="#demo" data-bs-slide="prev" style="
-                position:absolute;
-                left:-48px;
-                top:50%;
-                transform:translateY(-50%);
-                width:40px;
-                color:#666;
-                text-decoration:none;
-            ">
-                <span style="font-size:28px;">&#10094;</span>
-            </a>
+			<a class="carousel-control-prev" href="#demo" data-bs-slide="prev" aria-label="Previous suggested products"
+				style="position:absolute; left:-48px; top:50%; transform:translateY(-50%); width:40px; color:#666; text-decoration:none;">
+				<span aria-hidden="true" style="font-size: 28px;">&#10094;</span>
+			</a>
 
-            <a class="carousel-control-next" href="#demo" data-bs-slide="next" style="
-                position:absolute;
-                right:-48px;
-                top:50%;
-                transform:translateY(-50%);
-                width:40px;
-                color:#666;
-                text-decoration:none;
-            ">
-                <span style="font-size:28px;">&#10095;</span>
-            </a>
-        </div>
-    </section>
+			<a class="carousel-control-next" href="#demo" data-bs-slide="next" aria-label="Next suggested products"
+				style="position:absolute; right:-48px; top:50%; transform:translateY(-50%); width:40px; color:#666; text-decoration:none;">
+				<span aria-hidden="true" style="font-size: 28px;">&#10095;</span>
+			</a>
+		</div>
+	</section>
 
-  <!-- ══ GETTING STARTED ══ -->
-  <hr class="my-5">
-  <h3 class="fw-bold mb-3 h1">Getting Started</h3>
-  <p>A complete step-by-step setup guide is available, covering OAuth configuration, Custom App credentials, warehouse and journal mapping, and running your first sync.</p>
+	<!-- ══ GETTING STARTED ══ -->
+	<hr class="my-5">
+	<h3 class="fw-bold mb-3">Getting Started</h3>
+	<p>A complete step-by-step setup guide is available, covering OAuth configuration, Custom App credentials, warehouse
+		and journal mapping, and running your first sync.</p>
 
-  <div class="row g-3">
-    <div class="col-md-6 col-lg-3">
-      <div class="card h-100 rounded-3">
-        <div class="card-body">
-          <div class="fs-3 mb-2">📖</div>
-          <h5 class="card-title fw-bold">Setup Guide</h5>
-          <p class="card-text">Full configuration walkthrough including OAuth setup, Custom App credentials, warehouse mapping, journal configuration, and first sync steps.</p>
-          <a href="https://docs.google.com/document/d/18NxAhH26bAY1YN76EWjd4wPa2XFqQP0IpaHZ1x58UY8/edit?usp=sharing" target="_blank">Open Setup Guide →</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-      <div class="card h-100 rounded-3">
-        <div class="card-body">
-          <div class="fs-3 mb-2">💬</div>
-          <h5 class="card-title fw-bold">Functional Q&amp;A</h5>
-          <p class="card-text">Quick answers for the most frequent questions that come up.</p>
-          <a href="https://gemini.google.com/gem/1-ZRL6iQah6WBogSGHslE5y-xV_Ws05VR?usp=sharing" target="_blank">Ask a Question →</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-      <div class="card h-100 rounded-3">
-        <div class="card-body">
-          <div class="fs-3 mb-2">🛠</div>
-          <h5 class="card-title fw-bold">Custom Requirements</h5>
-          <p class="card-text">Need functionality beyond what's listed here? Custom development is available through Odoo's on-demand developer program.</p>
-          <a href="https://www.odoo.com/it_IT/page/developers-on-demand" target="_blank">Developers on Demand →</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-      <div class="card h-100 rounded-3">
-        <div class="card-body">
-          <div class="fs-3 mb-2">🤝</div>
-          <h5 class="card-title fw-bold">Need help?</h5>
-          <p class="card-text">For onboarding, configuration, or support assistance, please schedule an appointment using the appropriate link below. Our team will guide you through the setup and help with any technical clarification.</p>
-          <a href="https://www.odoo.com/r/book-ecommerce-USA-Canada" target="_blank">For USA &amp; Canada →</a><br>
-          <a href="https://www.odoo.com/book/ecommerce" target="_blank">Rest of the world →</a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="row g-3">
+		<div class="col-md-6 col-lg-3">
+			<div class="card h-100 rounded-3">
+				<div class="card-body">
+					<div class="fs-3 mb-2">📖</div>
+					<h5 class="card-title fw-bold">Setup Guide</h5>
+					<p class="card-text">Full configuration walkthrough including OAuth setup, Custom App credentials,
+						warehouse
+						mapping, journal configuration, and first sync steps.</p>
+					<a href="https://docs.google.com/document/d/18NxAhH26bAY1YN76EWjd4wPa2XFqQP0IpaHZ1x58UY8/edit"
+						target="_blank" rel="noopener noreferrer">Open Setup Guide →</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-3">
+			<div class="card h-100 rounded-3">
+				<div class="card-body">
+					<div class="fs-3 mb-2">💬</div>
+					<h5 class="card-title fw-bold">Functional Q&amp;A</h5>
+					<p class="card-text">Quick answers for the most frequent questions that come up.</p>
+					<a href="https://gemini.google.com/gem/1-ZRL6iQah6WBogSGHslE5y-xV_Ws05VR" target="_blank"
+						rel="noopener noreferrer">Ask a Question →</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-3">
+			<div class="card h-100 rounded-3">
+				<div class="card-body">
+					<div class="fs-3 mb-2">🛠</div>
+					<h5 class="card-title fw-bold">Custom Requirements</h5>
+					<p class="card-text">Need functionality beyond what's listed here? Custom development is available
+						through
+						Odoo's on-demand developer program.</p>
+					<a href="https://www.odoo.com/it_IT/page/developers-on-demand" target="_blank"
+						rel="noopener noreferrer">Developers on Demand →</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-3">
+			<div class="card h-100 rounded-3">
+				<div class="card-body">
+					<div class="fs-3 mb-2">🤝</div>
+					<h5 class="card-title fw-bold">Need help?</h5>
+					<p class="card-text">For onboarding, configuration, or support assistance, please schedule an
+						appointment
+						using the appropriate link below. Our team will guide you through the setup and help with any
+						technical
+						clarification.</p>
+					<a href="https://www.odoo.com/r/book-ecommerce-USA-Canada" target="_blank"
+						rel="noopener noreferrer">For USA
+						&amp; Canada →</a><br>
+					<a href="https://www.odoo.com/book/ecommerce" target="_blank" rel="noopener noreferrer">Rest of the
+						world
+						→</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </div>
-
-</body>
-</html>
