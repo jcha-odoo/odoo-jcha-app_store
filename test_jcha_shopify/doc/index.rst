@@ -1,3 +1,9 @@
+Get Started
+===============================
+A clear, step-by-step integration flow designed to connect, synchronize, and operate Shopify seamlessly with Odoo 19. Explore the complete feature coverage, operational flow, and system behavior in detail by reviewing the official integration overview below:
+
+https://www.odoo.com/r/ecommerce-shopify
+
 Shopify Connector Release Notes
 ===============================
 

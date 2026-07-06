@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BigCommerce Connector for Odoo 19</title>
+	<meta name="author" content="Odoo S.A.">
+	<meta name="generator" content="Odoo - https://www.odoo.com">
+	<meta name="description"
+		content="BigCommerce Connector for Odoo 19 - REST API integration for products, orders, inventory, and locations.">
+	<!-- Created and maintained by Odoo. Brand assets: https://www.odoo.com/page/brand-assets | (c) Odoo S.A. -->
+	<link rel="stylesheet" href="https://apps.odoo.com/web/assets/1/7aa8e7f/web.assets_frontend.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+
+<body>
+	<div class="container py-5" style="max-width: 1100px;">
+		<!-- ══ TITLE ══ -->
+		<h1 class="text-center fw-bold mb-2">BigCommerce Connector for Odoo 19</h1>
+		<p class="text-center fs-4 fw-bold mb-4">
+			Run your BigCommerce store, inventory, accounting, and deliveries all in one place
+		</p>
+
+		<!-- ══ SCREENSHOTS ══ -->
+		<div class="row align-items-center g-3 mb-4">
+			<div class="col-md-8">
+				<figure class="text-center mb-0">
+					<img src="odoo-bigcommerce-orders.png" class="img-fluid rounded border shadow-sm"
+						alt="BigCommerce orders synchronized into Odoo Sales" loading="eager" decoding="async">
+					<figcaption class="text-muted fst-italic small mt-2">
+						BigCommerce orders imported as Sales Orders in Odoo, with customer, order status,
+						payment, and warehouse information available in one place.
+					</figcaption>
+				</figure>
+			</div>
+
+			<div class="col-md-4">
+				<figure class="text-center mb-0">
+					<img src="bigcommerce-connector-mobile.png" class="img-fluid rounded border shadow-sm"
+						style="max-height: 480px; width: auto;" alt="BigCommerce order detail in Odoo mobile"
+						loading="eager" decoding="async">
+					<figcaption class="text-muted fst-italic small mt-2">
+						Manage BigCommerce orders on the go with the Odoo mobile app, including customer,
+						order lines, inventory, and e-commerce references.
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+
+		<p>
+			Unify your BigCommerce store and Odoo 19 with a robust, high-performance integration
+			built on the official <strong>BigCommerce REST API</strong>, enabling reliable
+			synchronization of products, orders, customers, inventory, and multistore operations.
+			The only BigCommerce connector on the Odoo Apps Store that is
+			<strong>directly built and supported by Odoo</strong>.
+		</p>
+
+		<p>
+			Built for businesses that want BigCommerce to work
+			<strong>natively with Odoo</strong>, without fragile custom integrations or upgrade
+			risks, while leveraging Odoo's inventory, warehouse, accounting, and sales
+			applications.
+		</p>
+
+		<!-- ══ LEVERAGE ODOO APPS ══ -->
+		<div class="p-4 rounded-4 my-5" style="background-color: #EEEBFB;">
+			<h3 class="text-center fw-bold mb-4">Leverage Odoo apps to fit your business</h3>
+			<div class="row g-3">
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card h-100 border-0 shadow-sm rounded-3">
+						<div class="card-body">
+							<div class="d-flex align-items-center gap-3 mb-3">
+								<img src="blue_warehouse.png" alt="Warehouse"
+									style="width: 40px; height: 40px; object-fit: contain;" loading="lazy"
+									decoding="async">
+								<h5 class="card-title fw-bold mb-0">Inventory Management</h5>
+							</div>
+							<p class="card-text text-muted">See every component and product flowing across your
+								end-to-end
+								inventory
+								operation.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card h-100 border-0 shadow-sm rounded-3">
+						<div class="card-body">
+							<div class="d-flex align-items-center gap-3 mb-3">
+								<img src="blue_piggy-bank.png" alt="Piggy bank"
+									style="width: 40px; height: 40px; object-fit: contain;" loading="lazy"
+									decoding="async">
+								<h5 class="card-title fw-bold mb-0">Clean books and accurate accounting</h5>
+							</div>
+							<p class="card-text text-muted">Experience effortless financial accuracy with intelligent
+								payment journal splitting and seamless, automated tax synchronization between
+								BigCommerce
+								and Odoo.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card h-100 border-0 shadow-sm rounded-3">
+						<div class="card-body">
+							<div class="d-flex align-items-center gap-3 mb-3">
+								<img src="blue_hand-truck.png" alt="Hand truck"
+									style="width: 40px; height: 40px; object-fit: contain;" loading="lazy"
+									decoding="async">
+								<h5 class="card-title fw-bold mb-0">Smarter Order Fulfillment</h5>
+							</div>
+							<p class="card-text text-muted">Fulfill orders from the right place every time. Sync stock
+								and manage orders across multiple locations.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3">
+					<div class="card h-100 border-0 shadow-sm rounded-3">
+						<div class="card-body">
+							<div class="d-flex align-items-center gap-3 mb-3">
+								<img src="blue_factory.png" alt="Factory"
+									style="width: 40px; height: 40px; object-fit: contain;" loading="lazy"
+									decoding="async">
+								<h5 class="card-title fw-bold mb-0">Scale with Multi-Company</h5>
+							</div>
+							<p class="card-text text-muted">Run multiple BigCommerce stores from one platform with
+								automatic currency conversion and regional inventory tracking.</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- ══ CHOOSE YOUR LEVEL OF SUPPORT ══ -->
+
+		<hr class="my-5">
+
+		<h3 class="fw-bold mb-3">
+			Choose your level of support
+		</h3>
+
+		<div class="row g-3">
+
+			<div class="col-md-6">
+				<div class="card h-100 border-start border-3 rounded-4 border-primary">
+					<div class="card-body">
+
+						<h5 class="card-title fw-bold mb-3">
+							Purchase the app and self-manage the repository
+						</h5>
+
+						<p class="mb-2">
+							1-hour free meeting with an expert, to get:
+						</p>
+
+						<ul class="mb-0">
+							<li>A tailored demonstration</li>
+							<li>Recommendations based on your needs</li>
+							<li>Answers to your questions about Odoo</li>
+							<li>Information about pricing &amp; methodology</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="card h-100 border-start border-3 rounded-4 border-primary">
+					<div class="card-body">
+
+						<h5 class="card-title fw-bold mb-3">
+							Purchase the app and pay for repository maintenance
+						</h5>
+
+						<ul class="mb-0">
+							<li>Receive customer support with Odoo experts</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- ══ TRY IT OUT ══ -->
+
+		<hr class="my-5">
+
+		<h3 class="fw-bold mb-3">
+			Try it out
+		</h3>
+
+		<p>
+			Explore the connector through the <strong>"Live Preview"</strong> environment.
+			You can browse the complete configuration screens, synchronization operations,
+			product mapping, inventory controls, and order management using the credentials
+			below:
+		</p>
+
+		<ul>
+			<li><strong>Username:</strong> <code>user</code></li>
+			<li><strong>Password:</strong> <code>user</code></li>
+		</ul>
+
+		<p class="text-muted fst-italic small">
+			*This demo database is intended for evaluation purposes only and may be reset
+			periodically.
+		</p>
+
+		<!-- ══ HOW IT WORKS ══ -->
+		<hr class="my-5">
+		<h3 class="fw-bold mb-3">How it works</h3>
+		<div class="row g-3">
+			<div class="col-md-4">
+				<div class="card h-100 bg-light rounded-3">
+					<div class="card-body">
+						<div class="d-flex align-items-center gap-3 mb-3">
+							<div class="bg-white border rounded d-flex align-items-center justify-content-center"
+								style="width: 44px; height: 44px; flex-shrink: 0;">
+								<img src="blue_card-2.png" alt="Purchase"
+									style="width: 36px; height: 36px; object-fit: contain;" loading="lazy"
+									decoding="async">
+							</div>
+							<h5 class="card-title fw-bold mb-0">Purchase</h5>
+						</div>
+						<p class="card-text text-muted mb-0">Complete your purchase from the Odoo Apps Store.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card h-100 bg-light rounded-3">
+					<div class="card-body">
+						<div class="d-flex align-items-center gap-3 mb-3">
+							<div class="bg-white border rounded d-flex align-items-center justify-content-center"
+								style="width: 44px; height: 44px; flex-shrink: 0;">
+								<img src="blue_file-spreadsheet.png" alt="Import products"
+									style="width: 36px; height: 36px; object-fit: contain;" loading="lazy"
+									decoding="async">
+							</div>
+							<h5 class="card-title fw-bold mb-0">Import BigCommerce products to Odoo</h5>
+						</div>
+						<p class="card-text text-muted mb-0">Create your product catalog in Odoo first (with correct
+							categories and taxes), then fetch from BigCommerce for SKU matching.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card h-100 bg-light rounded-3">
+					<div class="card-body">
+						<div class="d-flex align-items-center gap-3 mb-3">
+							<div class="bg-white border rounded d-flex align-items-center justify-content-center"
+								style="width: 44px; height: 44px; flex-shrink: 0;">
+								<img src="blue_link.png" alt="Connect accounts"
+									style="width: 36px; height: 36px; object-fit: contain;" loading="lazy"
+									decoding="async">
+							</div>
+							<h5 class="card-title fw-bold mb-0">Connect accounts</h5>
+						</div>
+						<p class="card-text text-muted mb-0">Follow the setup instructions and complete your first sync
+							steps.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ══ SYNCHRONIZATION AT A GLANCE ══ -->
+
+		<hr class="my-5">
+
+		<h3 class="fw-bold mb-3">
+			Synchronization at a Glance
+		</h3>
+
+		<p>
+			What synchronizes between BigCommerce and Odoo, in which direction, and how often.
+		</p>
+
+		<div class="table-responsive">
+			<table class="table table-bordered table-sm">
+
+				<thead class="table-light">
+					<tr>
+						<th scope="col">Data</th>
+						<th scope="col">Direction</th>
+						<th scope="col">Trigger</th>
+						<th scope="col">Frequency</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<tr>
+						<td><strong>Orders</strong></td>
+						<td>BigCommerce &#8594; Odoo</td>
+						<td>Automatic or manual</td>
+						<td>Every 10 min</td>
+					</tr>
+
+					<tr>
+						<td><strong>Products</strong></td>
+						<td>BigCommerce &#8594; Odoo</td>
+						<td>Manual (Fetch Products)</td>
+						<td>On demand only</td>
+					</tr>
+
+					<tr>
+						<td><strong>Inventory (Odoo &#8594; BigCommerce)</strong></td>
+						<td>Odoo &#8594; BigCommerce</td>
+						<td>Automatic after order pull</td>
+						<td>After each order sync</td>
+					</tr>
+
+					<tr>
+						<td><strong>Inventory (BigCommerce &#8594; Odoo)</strong></td>
+						<td>BigCommerce &#8594; Odoo</td>
+						<td>Manual (Fetch Inventory)</td>
+						<td>On demand only</td>
+					</tr>
+
+					<tr>
+						<td><strong>Fulfillments / Deliveries</strong></td>
+						<td>Both ways</td>
+						<td>Automatic</td>
+						<td>Every 10 min</td>
+					</tr>
+
+					<tr>
+						<td><strong>Locations</strong></td>
+						<td>BigCommerce &#8594; Odoo</td>
+						<td>Manual (Fetch Locations)</td>
+						<td>On demand only</td>
+					</tr>
+
+					<tr>
+						<td><strong>Invoices &amp; Payments</strong></td>
+						<td>Odoo (auto-created)</td>
+						<td>Automatic on paid order import</td>
+						<td>Each order sync</td>
+					</tr>
+
+					<tr>
+						<td><strong>Customers</strong></td>
+						<td>BigCommerce &#8594; Odoo</td>
+						<td>Automatic during order import</td>
+						<td>Each order sync</td>
+					</tr>
+
+				</tbody>
+
+			</table>
+		</div>
+
+		<div class="alert alert-warning">
+			<strong>⚠ Note:</strong>
+			When the <strong>Create Products</strong> option is enabled, Odoo automatically
+			creates a new product whenever a synchronized BigCommerce product or imported order
+			does not match an existing Odoo product by SKU (Internal Reference).
+		</div>
+
+		<!-- ══ FEATURE DETAILS ══ -->
+
+		<hr class="my-5">
+
+		<h3 class="fw-bold mb-3">
+			Feature Details
+		</h3>
+
+		<p>
+			Each section explains what the connector supports and its current limitations.
+			Click any section to expand.
+		</p>
+
+		<!-- Connection -->
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details open>
+
+				<summary class="p-3 fw-bold" style="cursor:pointer;background-color:#f8f9fa;">
+
+					Connection &amp; Authentication
+
+				</summary>
+
+				<div class="p-3 border-top">
+
+					<p>
+						The connector communicates with BigCommerce using the official
+						<strong>BigCommerce REST API</strong>.
+					</p>
+
+					<h6 class="fw-bold text-success mt-3">
+						✓ What it does
+					</h6>
+
+					<ul>
+
+						<li>
+							<strong>Authentication</strong> —
+							Connects using the Access Token and Store Hash generated
+							within BigCommerce.
+						</li>
+
+						<li>
+							<strong>Permission validation</strong> —
+							Validates API permissions before allowing synchronization.
+						</li>
+
+						<li>
+							<strong>Secure account management</strong> —
+							All communication occurs through authenticated API requests over HTTPS.
+						</li>
+
+					</ul>
+
+					<h6 class="fw-bold text-danger mt-3">
+						✕ What it doesn't do
+					</h6>
+
+					<ul>
+
+						<li>
+							<strong>Webhook synchronization</strong> —
+							Real-time synchronization is not supported. All operations run through
+							scheduled actions or manual operations.
+						</li>
+
+						<li>
+							<strong>Modify configuration while connected</strong> —
+							Account settings such as warehouse, journals, taxes, and inventory
+							configuration can only be changed after disconnecting the account.
+						</li>
+
+					</ul>
+
+				</div>
+
+			</details>
+		</div>
+
+		<!-- Multi Store -->
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details>
+
+				<summary class="p-3 fw-bold" style="cursor:pointer;background-color:#f8f9fa;">
+
+					Multi-Store &amp; Multi-Company
+
+				</summary>
+
+				<div class="p-3 border-top">
+
+					<h6 class="fw-bold text-success mt-3">
+						✓ What it does
+					</h6>
+
+					<ul>
+
+						<li>
+							<strong>BigCommerce Multistore support</strong> —
+							Connect multiple BigCommerce stores independently within Odoo.
+						</li>
+
+						<li>
+							<strong>Independent account configuration</strong> —
+							Every connected store maintains its own synchronization settings,
+							warehouse, journals, taxes, and mappings.
+						</li>
+
+						<li>
+							<strong>Multi-company support</strong> —
+							Multiple companies can independently manage their own connected stores.
+						</li>
+
+						<li>
+							<strong>Independent synchronization history</strong> —
+							Each account maintains separate synchronization timestamps.
+						</li>
+
+						<li>
+							<strong>Store isolation</strong> —
+							Orders, products, inventory, and customers remain isolated to their
+							respective account.
+						</li>
+
+					</ul>
+
+				</div>
+
+			</details>
+
+		</div>
+
+		<!-- Product Synchronization -->
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details>
+
+				<summary class="p-3 fw-bold" style="cursor:pointer;background-color:#f8f9fa;">
+
+					Product Synchronization
+
+				</summary>
+
+				<div class="p-3 border-top">
+					<p>Products flow <strong>one-way only: BigCommerce &#8594; Odoo</strong>. Product data is never
+						pushed from Odoo to BigCommerce.</p>
+					<h6 class="fw-bold text-success mt-3">
+						✓ What it does
+					</h6>
+
+					<ul>
+
+						<li>
+							<strong>SKU matching</strong> —
+							Products are matched using the BigCommerce SKU and the Odoo Internal
+							Reference.
+						</li>
+
+						<li>
+							<strong>Auto-create products</strong> —
+							Automatically creates new Odoo products when SKU matching fails and
+							Create Products is enabled.
+						</li>
+
+						<li>
+							<strong>Incremental synchronization</strong> —
+							Fetches only newly created or modified products after the previous sync.
+						</li>
+
+					</ul>
+
+					<h6 class="fw-bold text-danger mt-3">
+						✕ What it doesn't do
+					</h6>
+
+					<ul>
+						<li><strong>Push products to BigCommerce</strong> — Products cannot be created or updated in
+							BigCommerce from Odoo. Product management must happen in BigCommerce.</li>
+						<li><strong>Map metafields</strong> — BigCommerce metafields are not mapped to Odoo fields.</li>
+						<li><strong>Import variants as variants</strong> — BigCommerce variants are not imported as Odoo
+							variant lines. Each variant is created as a separate standalone product with its own SKU.
+						</li>
+						<li><strong>Push categories or tax configuration</strong> — Product categories and tax
+							configurations cannot be pushed from Odoo to BigCommerce. These must be set manually in
+							Odoo,
+							ideally before fetching. </li>
+					</ul>
+
+					<div class="alert alert-info mt-3">
+
+						<strong>💡 Best practice:</strong>
+
+						Create your product catalog in Odoo first with proper taxes and categories,
+						then synchronize products from BigCommerce to benefit from automatic SKU
+						matching.
+
+					</div>
+
+				</div>
+
+			</details>
+
+		</div>
+
+		<!-- Order Management -->
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details>
+				<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Order Management
+				</summary>
+				<div class="p-3 border-top">
+					<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+					<ul>
+						<li><strong>Order import (automatic)</strong> — Imports BigCommerce orders into Odoo on a
+							scheduled basis as confirmed Sales Orders.</li>
+						<li><strong>Date-range order fetch</strong> — Manually fetch orders from a specific date range
+							on demand.</li>
+						<li><strong>Recover failed orders</strong> — Recover individual orders using the Recover Order
+							action.</li>
+						<li><strong>Customer matching</strong> — Matches BigCommerce customers to Odoo by email and
+							billing name. Creates a new contact if no match is found.</li>
+						<li><strong>Currency detection</strong> — Automatically reads and applies the currency from each
+							BigCommerce order.</li>
+						<li><strong>Order cancellation</strong> — Automatically cancels the Odoo sales order when the
+							BigCommerce order is canceled. If delivery has already been created, a log note is added for
+							manual review.</li>
+						<li><strong>Shipping line display</strong> — Shipping costs appear as a separate order line,
+							with the customer's chosen carrier (FedEx, Shiprocket, Sendcloud, etc.) shown in the line
+							description. </li>
+						<li><strong>Discount handling</strong> — Discount costs are also appear as a separate order line
+							for each product, minimizing rounding differences.</li>
+					</ul>
+					<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+					<ul>
+						<li><strong>Apply regional pricelists</strong> — Odoo pricelists (per region or customer group)
+							are not applied during order import. Pricing reflects the BigCommerce order value as
+							received.</li>
+					</ul>
+				</div>
+			</details>
+		</div>
+
+		<!-- Inventory Synchronization -->
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details>
+				<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Inventory
+					Synchronization
+				</summary>
+				<div class="p-3 border-top">
+					<p><strong>Odoo &#8594; BigCommerce (automatic):</strong> After each order pull, the free quantity
+						(on-hand minus reserved) at the mapped Odoo location is pushed to the corresponding BigCommerce
+						location.</p>
+					<p><strong>BigCommerce &#8594; Odoo (manual only):</strong> Click "Fetch Inventory" under the
+						Operations tab. On-hand quantity per product per location is updated in Odoo.</p>
+					<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+					<ul>
+						<li><strong>Inventory push (automatic)</strong> — Pushes stock from Odoo to BigCommerce
+							automatically after each order sync.</li>
+						<li><strong>Inventory pull (manual)</strong> — Fetches current stock from BigCommerce into Odoo
+							on demand via the Fetch Inventory button.</li>
+						<li><strong>Multi-location inventory</strong> — Maps multiple BigCommerce locations to
+							corresponding Odoo stock locations.</li>
+						<li><strong>Granular sync controls</strong> — Inventory synchronization can be enabled or
+							disabled per account, per offer, and per location.</li>
+					</ul>
+					<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+					<ul>
+						<li><strong>Pull inventory automatically</strong> — Pulling stock from BigCommerce into Odoo is
+							not
+							automatic. It must be triggered manually. However, when a BigCommerce order is synced, the
+							quantity is automatically deducted from the mapped location inventory.</li>
+						<li><strong>Synchronize products with disabled inventory tracking</strong> — If inventory
+							tracking is disabled in
+							BigCommerce for a
+							product or location, sync for that product will fail. Because inventory is batch-updated, it
+							may
+							block other
+							products in the same batch.</li>
+					</ul>
+					<div class="alert alert-warning mt-3">
+						<strong>⚠ Note:</strong> Ensure Odoo and BigCommerce inventory levels are manually aligned
+						before
+						your
+						first sync
+						to avoid discrepancies.
+					</div>
+				</div>
+			</details>
+		</div>
+
+		<!-- Fulfillment & Shipping -->
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details>
+				<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">
+					Fulfillment &amp; Shipping
+				</summary>
+
+				<div class="p-3 border-top">
+
+					<p>Two fulfillment modes are supported:</p>
+					<ul>
+						<li><strong>Handled in Odoo:</strong> Delivery is created in draft in Odoo. Once validated (with
+							carrier and
+							tracking number), a Scheduled Action pushes the shipment to BigCommerce every 10 minutes.
+						</li>
+						<li><strong>Handled in BigCommerce:</strong> Fulfillment is created in BigCommerce and pulled
+							into Odoo
+							during sync.
+						</li>
+					</ul>
+
+					<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+
+					<ul>
+						<li>
+							<strong>Delivery creation</strong> — Creates delivery orders in Odoo
+							for imported BigCommerce sales orders.
+						</li>
+
+						<li>
+							<strong>Warehouse workflow</strong> — Deliveries follow Odoo's
+							standard picking, packing, and shipping process.
+						</li>
+
+						<li>
+							<strong>Warehouse integration</strong> — Deliveries follow the configured warehouse and
+							inventory workflow in Odoo.
+						</li>
+
+						<li>
+							<strong>Inventory updates</strong> — Stock is updated in Odoo after
+							delivery validation according to standard inventory rules.
+						</li>
+
+						<li>
+							<strong>Shipment synchronization</strong> — Validated deliveries are
+							not automatically synchronized back to BigCommerce.
+						</li>
+
+						<li>
+							<strong>Shipment status updates</strong> — Delivery status changes in
+							Odoo are not reflected in BigCommerce.
+						</li>
+
+						<li>
+							<strong>Split shipment synchronization</strong> — Partial or multiple
+							deliveries are not synchronized back to BigCommerce.
+						</li>
+					</ul>
+
+					<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+
+					<ul>
+						<li><strong>Support custom fulfillment flows</strong> — Fulfillment flows outside of standard
+							BigCommerce
+							fulfillment are not supported.</li>
+					</ul>
+
+					<div class="alert alert-info mt-3">
+						<strong>💡 Note:</strong>
+						If shipment synchronization are required, these can be implemented through custom
+						development.
+					</div>
+
+				</div>
+			</details>
+		</div>
+
+		<!-- Accounting -->
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details>
+				<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Accounting, Invoicing
+					&amp;
+					Payments</summary>
+				<div class="p-3 border-top">
+					<p>When "Create Invoice" is enabled, Odoo automatically creates and posts an invoice and registers
+						payment for every order marked as fully paid in BigCommerce. Sales and payment journals can be
+						configured per account.</p>
+					<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+					<ul>
+						<li><strong>Auto-invoicing</strong> — Creates and posts an invoice in Odoo when a BigCommerce
+							order
+							is marked as paid. If a product's invoicing policy is set to Delivered quantities in Odoo,
+							the invoice is created only after delivery.</li>
+						<li><strong>Payment provider mapping</strong> — Maps BigCommerce payment providers (Stripe,
+							PayPal,
+							Razorpay, COD, Bank Transfer, etc.) to specific Odoo payment journals.</li>
+						<li><strong>Tax matching</strong> — Matches BigCommerce taxes to Odoo. Creates a new tax in Odoo
+							if
+							no match is found and "Create Taxes" is enabled.</li>
+						<li><strong>Rounding handling</strong> — Minor rounding differences between BigCommerce and Odoo
+							totals are handled by adding a small adjustment line automatically.</li>
+					</ul>
+					<h6 class="fw-bold text-danger mt-3">✕ What it doesn't do</h6>
+					<ul>
+						<li><strong>Auto-invoice with rounding adjustments</strong> — Orders with a rounding adjustment
+							line will not auto-generate an invoice, even if paid. These must be invoiced manually.</li>
+						<li><strong>Apply inactive taxes</strong> — Inactive taxes in Odoo cannot be applied to imported
+							orders. Orders matching an inactive tax will fail and log an error.</li>
+						<li><strong>Auto-invoice when "Create Invoice" is disabled</strong> — If the setting is off,
+							invoices and payments must be created and registered manually.</li>
+					</ul>
+					<div class="alert alert-info mt-3">
+						<strong>💡 Note:</strong> Tax behavior (inclusive vs exclusive) is fetched directly from
+						BigCommerce's
+						tax
+						configuration and applied automatically when creating taxes in Odoo.
+					</div>
+				</div>
+			</details>
+		</div>
+
+		<!-- Monitoring -->
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details>
+				<summary class="p-3 fw-bold" style="cursor: pointer; background-color: #f8f9fa;">Monitoring &amp;
+					Troubleshooting
+				</summary>
+				<div class="p-3 border-top">
+					<h6 class="fw-bold text-success mt-3">✓ What it does</h6>
+					<ul>
+						<li><strong>Email alerts</strong> — Sends notifications to the assigned Salesperson or
+							Administrator
+							when an
+							order import or inventory synchronization fails.</li>
+						<li><strong>Order recovery</strong> — Manually re-fetch a specific failed order using its
+							BigCommerce Order Reference via the Recover Order action in the Cogs menu.</li>
+						<li><strong>API logs</strong> — Detailed API logs are available via the Logs smart button on the
+							account
+							(visible in Debug Mode — enable with Ctrl+K and type "debug").</li>
+						<li><strong>Scheduled activities</strong> — Activities are scheduled on records when manual
+							intervention is
+							needed (e.g., address mapping failure, adjustment line).</li>
+					</ul>
+				</div>
+			</details>
+		</div>
+		<!-- ══ FUNCTIONAL Q&A ══ -->
+
+		<hr class="my-5">
+
+		<h3 class="fw-bold mb-3">
+			Functional Q&amp;A
+		</h3>
+
+		<p>
+			Quick answers to the most common functional questions about the
+			BigCommerce Connector.
+		</p>
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details open>
+
+				<summary class="p-3 d-flex align-items-center gap-3" style="cursor:pointer;background-color:#f8f9fa;">
+
+					<span class="badge rounded-pill bg-primary text-white">1</span>
+
+					<span class="flex-grow-1">
+						"Does the connector support BigCommerce Multistore?"
+					</span>
+
+					<span class="badge bg-success rounded-1 text-white">
+						YES
+					</span>
+
+				</summary>
+
+				<div class="p-3 border-top">
+					Yes. Each Odoo account can be linked to a specific BigCommerce shop,
+					allowing complete isolation of products, orders, inventory, and
+					synchronization history.
+				</div>
+
+			</details>
+
+		</div>
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details>
+
+				<summary class="p-3 d-flex align-items-center gap-3" style="cursor:pointer;background-color:#f8f9fa;">
+
+					<span class="badge rounded-pill bg-primary text-white">2</span>
+
+					<span class="flex-grow-1">
+						"Can Odoo create or update products in BigCommerce?"
+					</span>
+
+					<span class="badge bg-danger rounded-1 text-white">
+						NO
+					</span>
+
+				</summary>
+
+				<div class="p-3 border-top">
+					Product synchronization is one-way only. Products are imported from
+					BigCommerce into Odoo. Product creation and updates in BigCommerce are
+					not supported by the connector.
+				</div>
+
+			</details>
+
+		</div>
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details>
+				<summary class="p-3 d-flex align-items-center gap-3"
+					style="cursor: pointer; background-color: #f8f9fa;">
+					<span class="badge rounded-pill bg-primary text-white">3</span>
+					<span class="flex-grow-1">"Does inventory synchronize automatically?"</span>
+					<span class="badge bg-warning rounded-1  text-white">PARTIAL</span>
+				</summary>
+				<div class="p-3 border-top">Odoo automatically pushes inventory to BigCommerce after each order
+					synchronization. Pulling inventory from BigCommerce into Odoo is available through the Fetch
+					Inventory operation.</div>
+			</details>
+		</div>
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details>
+
+				<summary class="p-3 d-flex align-items-center gap-3" style="cursor:pointer;background-color:#f8f9fa;">
+
+					<span class="badge rounded-pill bg-primary text-white">4</span>
+
+					<span class="flex-grow-1">
+						"Can inventory be synchronized per warehouse or location?"
+					</span>
+
+					<span class="badge bg-success rounded-1 text-white">
+						YES
+					</span>
+
+				</summary>
+
+				<div class="p-3 border-top">
+					Yes. Products, offers, locations, and accounts each provide stock
+					synchronization controls, allowing very granular inventory management.
+				</div>
+
+			</details>
+
+		</div>
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details>
+
+				<summary class="p-3 d-flex align-items-center gap-3" style="cursor:pointer;background-color:#f8f9fa;">
+
+					<span class="badge rounded-pill bg-primary text-white">6</span>
+
+					<span class="flex-grow-1">
+						"Can paid orders automatically create invoices?"
+					</span>
+
+					<span class="badge bg-success rounded-1 text-white">
+						YES
+					</span>
+
+				</summary>
+
+				<div class="p-3 border-top">
+					When the <strong>Create Invoice</strong> option is enabled, paid
+					BigCommerce orders automatically generate posted invoices and register
+					the corresponding payment in Odoo.
+				</div>
+
+			</details>
+
+		</div>
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details>
+
+				<summary class="p-3 d-flex align-items-center gap-3" style="cursor:pointer;background-color:#f8f9fa;">
+
+					<span class="badge rounded-pill bg-primary text-white">7</span>
+
+					<span class="flex-grow-1">
+						"Does the connector support real-time synchronization?"
+					</span>
+
+					<span class="badge bg-danger rounded-1 text-white">
+						NO
+					</span>
+
+				</summary>
+
+				<div class="p-3 border-top">
+					No. Synchronization is performed using scheduled actions (cron jobs)
+					and manual operations. Webhooks are not used.
+				</div>
+
+			</details>
+
+		</div>
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details>
+
+				<summary class="p-3 d-flex align-items-center gap-3" style="cursor:pointer;background-color:#f8f9fa;">
+
+					<span class="badge rounded-pill bg-primary text-white">8</span>
+
+					<span class="flex-grow-1">
+						"Can I recover a failed order?"
+					</span>
+
+					<span class="badge bg-success rounded-1 text-white">
+						YES
+					</span>
+
+				</summary>
+
+				<div class="p-3 border-top">
+					Yes. The Recover Order action allows you to import an individual
+					BigCommerce order by entering its Order Reference without running a full
+					synchronization.
+				</div>
+
+			</details>
+
+		</div>
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details>
+
+				<summary class="p-3 d-flex align-items-center gap-3" style="cursor:pointer;background-color:#f8f9fa;">
+
+					<span class="badge rounded-pill bg-primary text-white">9</span>
+
+					<span class="flex-grow-1">
+						"Can I synchronize orders from a specific period?"
+					</span>
+
+					<span class="badge bg-success rounded-1 text-white">
+						YES
+					</span>
+
+				</summary>
+
+				<div class="p-3 border-top">
+					Yes. The Fetch Orders operation supports importing orders created or
+					updated within any selected date range.
+				</div>
+
+			</details>
+
+		</div>
+
+		<div class="border rounded-3 mb-2 overflow-hidden">
+
+			<details>
+
+				<summary class="p-3 d-flex align-items-center gap-3" style="cursor:pointer;background-color:#f8f9fa;">
+
+					<span class="badge rounded-pill bg-primary text-white">10</span>
+
+					<span class="flex-grow-1">
+						"Will I receive notifications if synchronization fails?"
+					</span>
+
+					<span class="badge bg-success rounded-1 text-white">
+						YES
+					</span>
+
+				</summary>
+
+				<div class="p-3 border-top">
+					Yes. Critical synchronization failures generate detailed API logs and
+					send email notifications to the assigned Salesperson or Administrator,
+					allowing quick investigation and recovery.
+				</div>
+
+			</details>
+
+		</div>
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details>
+				<summary class="p-3 d-flex align-items-center gap-3"
+					style="cursor: pointer; background-color: #f8f9fa;">
+					<span class="badge rounded-pill bg-primary text-white">11</span>
+					<span class="flex-grow-1">"Does it handle returns and refunds from BigCommerce?"</span>
+					<span class="badge bg-danger rounded-1 text-white">NO</span>
+				</summary>
+				<div class="p-3 border-top">
+					Returns and refunds are currently not synchronized by the connector. Credit notes and inventory
+					adjustments must be managed manually in Odoo or implemented through custom development if required.
+				</div>
+			</details>
+		</div>
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details>
+				<summary class="p-3 d-flex align-items-center gap-3"
+					style="cursor: pointer; background-color: #f8f9fa;">
+					<span class="badge rounded-pill bg-primary text-white">12</span>
+					<span class="flex-grow-1">"Does it support different pricelists per region or customer
+						group?"</span>
+					<span class="badge bg-danger rounded-1 text-white">NO</span>
+				</summary>
+				<div class="p-3 border-top">Pricing is taken directly from the Sale order line of a BigCommerce order as
+					received. Region-based or customer-group pricelists in Odoo are not applied during order import. Any
+					pricing or product-related changes should be made on BigCommerce.</div>
+			</details>
+		</div>
+		<div class="border rounded-3 mb-2 overflow-hidden">
+			<details>
+				<summary class="p-3 d-flex align-items-center gap-3" style="cursor:pointer;background-color:#f8f9fa;">
+					<span class="badge rounded-pill bg-primary text-white">13</span>
+					<span class="flex-grow-1">
+						"Does the connector support multiple inventory locations?"
+					</span>
+					<span class="badge bg-success rounded-1 text-white">
+						YES
+					</span>
+				</summary>
+				<div class="p-3 border-top">
+					Yes. The connector supports BigCommerce's multi-location inventory by allowing
+					multiple BigCommerce inventory locations to be mapped with corresponding Odoo stock
+					locations. Inventory is synchronized independently for each configured location.
+				</div>
+			</details>
+		</div>
+		<!-- SUGGESTED PRODUCTS -->
+		<hr class="my-5">
+		<section class="container mt32" style="max-width:1000px;">
+			<h2 class="oe_slogan text-center" style="margin:24px auto; text-transform:uppercase;">
+				<b>Suggested Products</b>
+			</h2>
+
+			<div id="demo" class="carousel slide mt64 mb32" data-bs-ride="carousel" data-bs-interval="4000"
+				style="position:relative; padding:0 64px;">
+
+				<div class="carousel-inner">
+
+					<!-- Slide 1 -->
+					<div class="carousel-item active" style="min-height:280px;">
+						<div class="row">
+
+							<div class="col-xs-12 col-sm-6 mb16">
+								<a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_prestashop" target="_blank"
+									rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+									<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+										<img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_prestashop/banner.jpg"
+											class="img img-responsive" style="width:100%;" alt="PrestaShop connector"
+											loading="lazy" decoding="async">
+										<h4 style="padding:16px; text-align:center; font-weight:600;">
+											PrestaShop
+										</h4>
+									</div>
+								</a>
+							</div>
+
+							<div class="col-xs-12 col-sm-6 mb16">
+								<a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_magento" target="_blank"
+									rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+									<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+										<img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_magento/banner.jpg"
+											class="img img-responsive" style="width:100%;" alt="Magento connector"
+											loading="lazy" decoding="async">
+										<h4 style="padding:16px; text-align:center; font-weight:600;">
+											Magento
+										</h4>
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+
+					<!-- Slide 2 -->
+					<div class="carousel-item" style="min-height:280px;">
+						<div class="row">
+
+							<div class="col-xs-12 col-sm-6 mb16">
+								<a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_shopify" target="_blank"
+									rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+									<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+										<img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_shopify/banner.jpg"
+											class="img img-responsive" style="width:100%;" alt="Shopify connector"
+											loading="lazy" decoding="async">
+										<h4 style="padding:16px; text-align:center; font-weight:600;">
+											Shopify
+										</h4>
+									</div>
+								</a>
+							</div>
+
+							<div class="col-xs-12 col-sm-6 mb16">
+								<a href="https://apps.odoo.com/apps/modules/19.0/ecommerce_woocommerce" target="_blank"
+									rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+									<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+										<img src="//apps.odoocdn.com/apps/assets/19.0/ecommerce_woocommerce/banner.jpg"
+											class="img img-responsive" style="width:100%;" alt="WooCommerce connector"
+											loading="lazy" decoding="async">
+										<h4 style="padding:16px; text-align:center; font-weight:600;">
+											WooCommerce
+										</h4>
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+
+					<!-- Slide 3 -->
+					<div class="carousel-item" style="min-height:280px;">
+						<div class="row">
+
+							<div class="col-xs-12 col-sm-6 mb16">
+								<a href="https://apps.odoo.com/apps/modules/19.0/sale_unicommerce" target="_blank"
+									rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+									<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+										<img src="//apps.odoocdn.com/apps/assets/19.0/sale_unicommerce/banner.jpg"
+											class="img img-responsive" style="width:100%;" alt="UniCommerce connector"
+											loading="lazy" decoding="async">
+										<h4 style="padding:16px; text-align:center; font-weight:600;">
+											UniCommerce
+										</h4>
+									</div>
+								</a>
+							</div>
+
+							<div class="col-xs-12 col-sm-6 mb16">
+								<a href="https://apps.odoo.com/apps/modules/19.0/sale_easyecom" target="_blank"
+									rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
+									<div class="shadow-sm" style="border-radius:10px; overflow:hidden;">
+										<img src="//apps.odoocdn.com/apps/assets/19.0/sale_easyecom/banner.jpg"
+											class="img img-responsive" style="width:100%;" alt="EasyEcom connector"
+											loading="lazy" decoding="async">
+										<h4 style="padding:16px; text-align:center; font-weight:600;">
+											EasyEcom
+										</h4>
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<a class="carousel-control-prev" href="#demo" data-bs-slide="prev"
+					aria-label="Previous suggested products"
+					style="position:absolute; left:-48px; top:50%; transform:translateY(-50%); width:40px; color:#666; text-decoration:none;">
+					<span aria-hidden="true" style="font-size: 28px;">&#10094;</span>
+				</a>
+
+				<a class="carousel-control-next" href="#demo" data-bs-slide="next" aria-label="Next suggested products"
+					style="position:absolute; right:-48px; top:50%; transform:translateY(-50%); width:40px; color:#666; text-decoration:none;">
+					<span aria-hidden="true" style="font-size: 28px;">&#10095;</span>
+				</a>
+			</div>
+		</section>
+
+		<!-- ══ GETTING STARTED ══ -->
+		<hr class="my-5">
+		<h3 class="fw-bold mb-3">Getting Started</h3>
+		<p>A complete step-by-step setup guide is available, covering configuration, Custom App credentials,
+			warehouse
+			and journal mapping, and running your first sync.</p>
+
+		<div class="row g-3">
+			<div class="col-md-6 col-lg-3">
+				<div class="card h-100 rounded-3">
+					<div class="card-body">
+						<div class="fs-3 mb-2">📖</div>
+						<h5 class="card-title fw-bold">Setup Guide</h5>
+						<p class="card-text">Full configuration walkthrough including setup, Custom App
+							credentials,
+							warehouse
+							mapping, journal configuration, and first sync steps.</p>
+						<a href=" https://www.odoo.com/r/nOu" target="_blank" rel="noopener noreferrer">Open Setup Guide
+							&#8594;</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3">
+				<div class="card h-100 rounded-3">
+					<div class="card-body">
+						<div class="fs-3 mb-2">💬</div>
+						<h5 class="card-title fw-bold">Functional Q&amp;A</h5>
+						<p class="card-text">Quick answers for the most frequent questions that come up.</p>
+						<a href=" https://www.odoo.com/r/wyO" target="_blank" rel="noopener noreferrer">Ask a Question
+							&#8594;</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3">
+				<div class="card h-100 rounded-3">
+					<div class="card-body">
+						<div class="fs-3 mb-2">🛠</div>
+						<h5 class="card-title fw-bold">Custom Requirements</h5>
+						<p class="card-text">Need functionality beyond what's listed here? Custom development is
+							available
+							through
+							Odoo's on-demand developer program.</p>
+						<a href="https://www.odoo.com/page/developers-on-demand" target="_blank"
+							rel="noopener noreferrer">Developers on Demand &#8594;</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3">
+				<div class="card h-100 rounded-3">
+					<div class="card-body">
+						<div class="fs-3 mb-2">🤝</div>
+						<h5 class="card-title fw-bold">Need help?</h5>
+						<p class="card-text">For onboarding, configuration, or support assistance, please schedule an
+							appointment
+							using the appropriate link below. Our team will guide you through the setup and help with
+							any
+							technical
+							clarification.</p>
+						<a href="https://www.odoo.com/book/ecommerce" target="_blank" rel="noopener noreferrer">Book an
+							Appointment
+							&#8594;</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
