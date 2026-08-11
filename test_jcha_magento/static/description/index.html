@@ -72,7 +72,7 @@
 					<div class="card h-100 border-0 shadow-sm rounded-3">
 						<div class="card-body">
 							<div class="d-flex align-items-center gap-3 mb-3">
-								<img src="blue_warehouse.png" alt="Warehouse"
+								<img src="../../../test_jcha_odoo_ecommerce/static/description/blue_warehouse.png" alt="Warehouse"
 									style="width: 40px; height: 40px; object-fit: contain;" loading="lazy"
 									decoding="async">
 								<h5 class="card-title fw-bold mb-0">Inventory Management</h5>
@@ -325,6 +325,31 @@
 						<td>Both ways</td>
 						<td>Automatic</td>
 						<td>Every 10 min</td>
+					</tr>
+
+					<tr>
+						<td><strong>Inventory (in Odoo)</strong></td>
+						<td>Odoo &#8594; Magento</td>
+						<td>Automatic after order pull</td>
+						<td>After each order sync</td>
+					</tr>
+					<tr>
+						<td><strong>Inventory (in Magento)</strong></td>
+						<td>Magento &#8594; Odoo</td>
+						<td>Manual (Fetch Inventory)</td>
+						<td>On demand only</td>
+					</tr>
+					<tr>
+						<td><strong>Deliveries</strong></td>
+						<td>Odoo &#8594; Magento</td>
+						<td>Automatic</td>
+						<td>Every 10 min</td>
+					</tr>
+					<tr>
+						<td><strong>Deliveries</strong></td>
+						<td>Magento &#8594; Odoo</td>
+						<td>Automatic during order import</td>
+						<td>Each order sync</td>
 					</tr>
 
 					<tr>
