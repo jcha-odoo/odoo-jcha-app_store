@@ -859,7 +859,7 @@
 				</summary>
 
 				<div class="p-3 border-top">
-					Yes. Each Odoo account can be linked to a specific Magento shop,
+					Yes. Each Odoo account can be linked to a specific Magento store,
 					allowing complete isolation of products, orders, inventory, and
 					synchronization history.
 				</div>
@@ -951,16 +951,14 @@
 						"Does the connector synchronize shipments and tracking numbers?"
 					</span>
 
-					<span class="badge bg-danger rounded-1 text-white">
-						NO
+					<span class="badge bg-success rounded-1 text-white">
+						YES
 					</span>
 
 				</summary>
 
 				<div class="p-3 border-top">
-					Magento does not provide native shipment APIs. Shipment creation,
-					carrier synchronization, and tracking numbers require custom
-					development if needed.
+					Yes, delivery synchronization is supported in both directions. Odoo deliveries are created from Magento shipments that are received during order sync. Likewise, Magento shipments are periodically created from Odoo deliveries if "Delivery Handled on" is configured to "Odoo".
 				</div>
 
 			</details>
@@ -1112,7 +1110,7 @@
 					<span class="flex-grow-1">"Does it handle returns and refunds from Magento?"</span>
 					<span class="badge bg-danger rounded-1 text-white">NO</span>
 				</summary>
-				<div class="p-3 border-top">Magento does not provide native return and refund synchronization.
+				<div class="p-3 border-top">Returns and refunds are currently not synchronized by the connector.
 					Returns, refunds, credit notes, and inventory adjustments must be managed manually in Odoo or
 					implemented through custom development if required.</div>
 			</details>
