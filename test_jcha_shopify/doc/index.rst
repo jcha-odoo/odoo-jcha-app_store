@@ -7,6 +7,20 @@ https://www.odoo.com/r/ecommerce-shopify
 Shopify Connector Release Notes
 ===============================
 
+* **Version 19.0.2.4 (2026-07-22)**
+
+  - Improved inventory push logging messages with more specific error details.
+  - Optimized inventory synchronization to send stock updates more efficiently from Odoo to Shopify.
+
+* **Version 19.0.2.3 (2026-07-07)**
+
+  - Prevent further refund synchronization if any refund exists in Odoo that is not available in Shopify.
+  - Added tax creation during refund processing according to "Create Taxes" configuration.
+
+* **Version 19.0.2.2 (2026-06-29)**
+
+  - Added the "Shopify" tag to every customer created from Shopify.
+
 * **Version 19.0.2.1 (2026-06-16)**
 
   - Implemented handling of fulfillments received from Shopify using a backorder-based approach to ensure accurate inventory synchronization.
