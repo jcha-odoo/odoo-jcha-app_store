@@ -1,0 +1,134 @@
+
+name: Update Odoo.sh and Create Staging PR
+
+on:
+  push:
+    branches:
+      - "20.0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: update-odoosh-submodule
+  cancel-in-progress: false
+
+jobs:
+  update-odoosh:
+    runs-on: ubuntu-latest
+
+    env:
+      SUBMODULE_PATH: odoo-india/ecommerce
+      ODOOSH_REPO: ampa-odoo/odoo-connectors
+      DEVELOPMENT_BRANCH: 20.0-ecommerce-sync-submodule-ampa
+      STAGING_BRANCH: staging
+      PR_BRANCH: 20.0-ecommerce-sync-submodule-ampa
+      REVIEWER: jcha-odoo
+
+    steps:
+      - name: Checkout Odoo.sh development branch
+        uses: actions/checkout@v4
+        with:
+          repository: jcha-odoo/odoosh-test
+          ref: sh-test
+          token: ${{ secrets.PARENT_REPO_TOKEN }}
+          fetch-depth: 0
+          submodules: false
+
+      - name: Configure Git
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_REPO_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git config --global \
+            url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf \
+            "git@github.com:"
+
+      - name: Update submodule reference on sh-test
+        run: |
+          git submodule update --init --remote -- "$SUBMODULE_PATH"
+
+          git add "$SUBMODULE_PATH"
+
+          if ! git diff --cached --quiet; then
+            git commit -m "[IMP] update app store submodule"
+            git push origin "HEAD:$DEVELOPMENT_BRANCH"
+          else
+            echo "Submodule reference is already up to date."
+          fi
+
+      - name: Fetch latest staging and development
+        run: |
+          git fetch origin \
+            "$STAGING_BRANCH" \
+            "$DEVELOPMENT_BRANCH"
+
+      - name: Prepare PR branch from staging
+        run: |
+          git checkout "$PR_BRANCH" \
+            "origin/$STAGING_BRANCH"
+
+          # Read the exact submodule commit recorded in sh-test.
+          SUBMODULE_COMMIT=$(git ls-tree \
+            "origin/$DEVELOPMENT_BRANCH" \
+            -- "$SUBMODULE_PATH" | awk '{print $3}')
+
+          if [ -z "$SUBMODULE_COMMIT" ]; then
+            echo "Could not find submodule in development branch."
+            exit 1
+          fi
+
+          git submodule update --init -- "$SUBMODULE_PATH"
+
+          git -C "$SUBMODULE_PATH" fetch origin 20.0
+          git -C "$SUBMODULE_PATH" checkout \
+            --detach "$SUBMODULE_COMMIT"
+
+          git add "$SUBMODULE_PATH"
+
+          if git diff --cached --quiet; then
+            echo "Staging already references this submodule commit."
+            exit 0
+          fi
+
+          git commit -m "[IMP] update app store submodule"
+
+      - name: Push PR branch
+        if: success()
+        run: |
+          git push origin "HEAD:$PR_BRANCH" --force-with-lease
+
+      - name: Create or update staging PR
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_REPO_TOKEN }}
+        run: |
+          PR_NUMBER=$(gh pr list \
+            --repo "$ODOOSH_REPO" \
+            --base "$STAGING_BRANCH" \
+            --head "$PR_BRANCH" \
+            --state open \
+            --json number \
+            --jq '.[0].number // empty')
+
+          if [ -n "$PR_NUMBER" ]; then
+            gh pr edit "$PR_NUMBER" \
+              --repo "$ODOOSH_REPO" \
+              --add-reviewer "$REVIEWER"
+          else
+            gh pr create \
+              --repo "$ODOOSH_REPO" \
+              --base "$STAGING_BRANCH" \
+              --head "$PR_BRANCH" \
+              --title "[IMP] update app store submodule" \
+              --body "Automated submodule update.
+
+          Source: $DEVELOPMENT_BRANCH
+          Target: $STAGING_BRANCH
+
+          Please review before merging." \
+              --reviewer "$REVIEWER"
+          fi
